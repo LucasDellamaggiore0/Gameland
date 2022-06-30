@@ -20,6 +20,7 @@ const models = {
     games: require('./models/Games')(sequelize),
     platforms: require('./models/Platforms')(sequelize),
     genres: require('./models/Genres')(sequelize),
+    users: require('./models/Users')(sequelize),
 }
 
 //! DESTRUCTURACION DE LOS MODELOS
