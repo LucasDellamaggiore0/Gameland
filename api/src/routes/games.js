@@ -19,15 +19,6 @@ router.get('/', async (req, res) => {
     }
 })
 
-// router.post('/', async (req, res) => {
-//     const {name, description, genres, platforms} = req.body;
-//     try {
-//         const newGame = await postGame(name, description, genres, platforms);
-//         res.json(newGame);
-//     } catch (error) {
-//         res.status(400).send({error: error.message});
-//     }
-// })
 
 router.post('/', [
     check('name', 'El nombre del juego es obligatorio').not().isEmpty(),

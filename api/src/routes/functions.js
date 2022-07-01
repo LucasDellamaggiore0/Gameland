@@ -1,4 +1,4 @@
-const {Games, Platforms, Genres} = require('../db');
+const {Games, Platforms, Genres, Users} = require('../db');
 const {Op} = require('sequelize');
 
 //! OBTENEMOS TODOS LOS JUEGOS DE LA BASE DE DATOS
@@ -122,7 +122,27 @@ async function postPlatform(name) {
     });
     return newPlatform;
 }
+//! POSTEAMOS UN USUARIO A LA BASE DE DATOS
 
+async function postUser(name, email, password) {
+    const newUser = await Users.create({
+        name,
+        email,
+        password
+    });
+    return newUser;
+}
+
+//! LOGIN DE UN USUARIO
+
+async function loginUser(email) {
+    const user = await Users.findOne({
+        where: {
+            email
+        }
+    });
+    return user;
+}
 
 
 module.exports = {
@@ -134,4 +154,6 @@ module.exports = {
     getPlatforms,
     gameDetail,
     getGamesByName,
+    postUser,
+    loginUser
 }
