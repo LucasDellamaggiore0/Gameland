@@ -35,7 +35,11 @@ router.post('/', [
         const newUser = await postUser(name, email, passwordBcrypt);
         // newUser.password = bycrypt.hashSync(password, salt);
         // newUser.password = await hash(password, 10)
-        res.json(newUser);
+        res.json({
+            ok: true,
+            msg: 'Usuario creado correctamente',
+            newUser
+        });
     } catch (error) {
         res.status(400).send({error: error.message});
     }

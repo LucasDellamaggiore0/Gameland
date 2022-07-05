@@ -5,6 +5,7 @@ import './App.css';
 // import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Login from './components/login/Login';
+import NewUser from './components/newUser/NewUser';
 
 function App() {
   // const dispatch = useDispatch();
@@ -18,6 +19,7 @@ function App() {
     <>
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/createAccount" element={<NewUser />} />
         <Route path="/" element={<div>Hello World</div>} />
       </Routes>
     </>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { LOG_IN } from '../../redux/actions'
 import validate from './validate'
 export default function Login() {
@@ -28,7 +28,6 @@ export default function Login() {
         e.preventDefault();
         if (Object.keys(errors).length === 0) {
             dispatch(LOG_IN(form))
-            // userResponse.ok && navigate('/')
         }
         setForm({
             email: '',
@@ -44,7 +43,6 @@ export default function Login() {
                 errorUser : userResponse.msg
             })
         }
-        // console.log(userResponse)
     }, [userResponse])
     return (
         <form onSubmit={handleSubmit}>
@@ -59,9 +57,10 @@ export default function Login() {
                 <input type="password" className="form-control" id="password" name="password" value={form.password} onChange={handleChange} />
                 {errors.password && <small>{errors.password}</small>}
             </div>
-            {/* {userResponse.ok ? navigate('/') : <small>{userResponse.msg}</small>} */}
-            {/* {userResponse.ok && navigate('/')} */}
             <button type="submit">Submit</button>
+            <Link to='/createAccount'>
+                <p>¿No tienes cuenta? Regístrate</p>
+            </Link>
         </form>
     )
 }

@@ -1,9 +1,10 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { GET_GAMES, LOG_IN } from "./actions";
+import { GET_GAMES, LOG_IN, CREATE_USER } from "./actions";
 
 const initialState = {
     games: [],
-    userResponse : {ok : ''}
+    userResponse : {ok : ''},
+    newUserResponse: {ok: ''}
 }
 
 
@@ -13,5 +14,8 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     builder.addCase(LOG_IN.fulfilled, (state, action) => {
         state.userResponse = {...action.payload};
+    })
+    builder.addCase(CREATE_USER.fulfilled, (state, action) => {
+        state.newUserResponse = {...action.payload};
     })
 });
