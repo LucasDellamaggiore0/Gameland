@@ -13,7 +13,7 @@ router.post('/signin', [
 ], validateFields, async (req, res) => {
     const {email, password} = req.body;
     try {
-        const user = await loginUser(email, password);
+        const user = await loginUser(email);
         if(!user){
             return res.status(400).send({
                 ok: false,
