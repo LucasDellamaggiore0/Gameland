@@ -30,9 +30,15 @@ router.post('/', [
     const {name, description, genres, platforms} = req.body;
     try {
         const newGame = await postGame(name, description, genres, platforms);
-        res.json(newGame);
+        res.json({
+            ok: true,
+            game: newGame
+        });
     } catch (error) {
-        res.status(400).send({error: error.message});
+        res.status(400).send({
+            ok: false,
+            msg: 'Ya existe un juego con ese nombre'
+        });
     }
 })
 
