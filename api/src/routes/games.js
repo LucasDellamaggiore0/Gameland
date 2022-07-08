@@ -27,9 +27,10 @@ router.post('/', [
     check('platforms', 'El juego debe tener al menos una plataforma').not().isEmpty(),
 
 ],validateFields, async (req, res) => {
-    const {name, description, genres, platforms} = req.body;
+    const {name, description, genres, platforms, img} = req.body;
+    //! IMPORTANTE : IMG ES UN ARRAY DE OBJETOS, CHEQUEAR QUE DESDE EL FRONT SE ENVIE UN ARRAY DE OBJETOS
     try {
-        const newGame = await postGame(name, description, genres, platforms);
+        const newGame = await postGame(name, description, genres, platforms, img);
         res.json({
             ok: true,
             game: newGame
