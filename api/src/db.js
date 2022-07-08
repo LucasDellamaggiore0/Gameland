@@ -21,16 +21,19 @@ const models = {
     platforms: require('./models/Platforms')(sequelize),
     genres: require('./models/Genres')(sequelize),
     users: require('./models/Users')(sequelize),
+    images: require('./models/Images')(sequelize),
 }
 
 //! DESTRUCTURACION DE LOS MODELOS
-const {Games, Platforms, Genres} = sequelize.models;
+const {Games, Platforms, Genres, Images} = sequelize.models;
 
 //! RELACIONES
 Games.belongsToMany(Platforms, {through: 'games_platforms'});
 Platforms.belongsToMany(Games, {through: 'games_platforms'});
 Games.belongsToMany(Genres, {through: 'games_genres'});
 Genres.belongsToMany(Games, {through: 'games_genres'});
+Games.belongsToMany(Images, {through: 'games_images'});
+Images.belongsToMany(Games, {through: 'games_images'});
 
 
 module.exports = {

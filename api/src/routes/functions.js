@@ -1,4 +1,4 @@
-const {Games, Platforms, Genres, Users} = require('../db');
+const {Games, Platforms, Genres, Users, Images} = require('../db');
 const {Op} = require('sequelize');
 
 //! OBTENEMOS TODOS LOS JUEGOS DE LA BASE DE DATOS
@@ -15,6 +15,13 @@ async function getGames() {
             {
                 model: Genres,
                 attributes: ['name'],
+                through: {
+                    attributes: []
+                }
+            },
+            {
+                model: Images,
+                attributes: ['alt', 'url', 'primary'],
                 through: {
                     attributes: []
                 }
@@ -94,14 +101,22 @@ async function getPlatforms() {
 
 //! POSTEAMOS UN JUEGO A LA BASE DE DATOS
 
-async function postGame(name, description, genres, platforms) {
-    
+async function postGame(name, description, genres, platforms, img) {
+    const imgs = await Images.bulkCreate(img);
+    imgs.map(img => {
+        return {
+            alt : img.alt,
+            url : img.url,
+            primary : img.primary
+        }
+    })
     const newGame = await Games.create({
         name,
         description
     });
     newGame.addGenres(genres);
     newGame.addPlatforms(platforms);
+    newGame.addImages(imgs);
     return newGame;
 }
 
