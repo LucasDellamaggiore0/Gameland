@@ -14,10 +14,6 @@ module.exports = (sequelize) => {
         url: {
             type: DataTypes.STRING,
             allowNull: false,
-        },
-        primary: {
-            type: DataTypes.BOOLEAN,
-            allowNull: true,
         }
     }, {
         timestamps: false,
