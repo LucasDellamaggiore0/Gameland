@@ -19,9 +19,6 @@ function App() {
     dispatch(GET_PLATFORMS());
   }, [dispatch]);
   
-  console.log(1, games);
-  console.log(2, genres);
-  console.log(3, platforms);
 
   return (
     <>

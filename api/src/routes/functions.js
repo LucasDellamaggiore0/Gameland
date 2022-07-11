@@ -112,7 +112,7 @@ async function postGame(name, description, genres, platforms, img) {
     })
     const newGame = await Games.create({
         name,
-        description
+        description,
     });
     newGame.addGenres(genres);
     newGame.addPlatforms(platforms);
