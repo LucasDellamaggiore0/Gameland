@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import _default from 'react-redux/es/components/connect';
-import { ADD_GAME } from '../../redux/actions';
+import { ADD_GAME, GET_GENRES, GET_PLATFORMS } from '../../redux/actions';
 import validate from './validate'
 
 
@@ -38,6 +38,10 @@ export default function NewGame() {
 	}
 	const dispatch = useDispatch();
 	const {game, platforms, genres} = useSelector(state => state.reducer)
+	useEffect(()=>{
+		dispatch(GET_PLATFORMS())
+		dispatch(GET_GENRES())
+	}, [dispatch])
 	useEffect(()=>{
 		if(game.ok){
 			alert('Juego creado exitosamente')
