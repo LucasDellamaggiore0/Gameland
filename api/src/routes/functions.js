@@ -21,7 +21,7 @@ async function getGames() {
             },
             {
                 model: Images,
-                attributes: ['alt', 'url', 'primary'],
+                attributes: ['alt', 'url'],
                 through: {
                     attributes: []
                 }

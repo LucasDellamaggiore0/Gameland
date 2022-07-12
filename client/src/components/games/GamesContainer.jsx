@@ -12,9 +12,8 @@ export default function GamesContainer() {
     }, [dispatch]);
     console.log(1, games.games);
     return (
-        <div>
-            <h1>Games</h1>
+        <>
             <GamesMap games={games.games} />
-        </div>
+        </>
     )
 }

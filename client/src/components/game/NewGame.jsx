@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import _default from 'react-redux/es/components/connect';
 import { ADD_GAME, GET_GENRES, GET_PLATFORMS } from '../../redux/actions';
 import validate from './validate'
 
@@ -36,12 +35,34 @@ export default function NewGame() {
 			img: []
 		})
 	}
+
+	const handleGenres = (e) => {
+		if(e.target.value === 'Select a genre') return
+		if(games.genres.includes(e.target.value)) return
+		setGames({ ...games, genres: [...games.genres, e.target.value] })
+	}
+
+	const handlePlatforms = (e) => {
+		if(e.target.value === 'Select a platform') return
+		if(games.platforms.includes(e.target.value)) return
+		setGames({ ...games, platforms: [...games.platforms, e.target.value] })
+	}
+
+	const handleImages = (e) => {
+		setGames({ ...games, img: [...games.img, e.target.files[0]] })
+	}
+
 	const dispatch = useDispatch();
 	const {game, platforms, genres} = useSelector(state => state.reducer)
+	
+	
 	useEffect(()=>{
 		dispatch(GET_PLATFORMS())
 		dispatch(GET_GENRES())
 	}, [dispatch])
+	
+	
+	
 	useEffect(()=>{
 		if(game.ok){
 			alert('Juego creado exitosamente')
@@ -67,28 +88,43 @@ export default function NewGame() {
 			</div>
 			<div className="form-group">
 				<label htmlFor="genres">Genres</label>
-				<select className="form-control" id="genres" name="genres" value={games.genres} onChange={handleChange} multiple={true}>
+				<select className="form-control" id="genres" name="genres" value={games.genres} onChange={handleGenres} multiple={true}>
 					<option value="">Select a genre</option>
 					{genres.map(genre => (
 						<option key={genre.id} value={genre.id}>{genre.name}</option>
 					))}
 				</select>
 				{errors.genres && <small>{errors.genres}</small>}
+				<div>
+					{games.genres.map((g)=>{
+						let genre = genres.find(genre => genre.id === g)
+						return <span key={genre.id}>{genre.name}</span>
+					})}
+				</div>
 			</div>
 			<div className="form-group">
 				<label htmlFor="platforms">Platforms</label>
-				<select className="form-control" id="platforms" name="platforms" value={games.platforms} onChange={handleChange} multiple={true}>
+				<select className="form-control" id="platforms" name="platforms" value={games.platforms} onChange={handlePlatforms} multiple={true}>
 					<option value="">Select a platform</option>
 					{platforms.map(platform => (
 						<option key={platform.id} value={platform.id}>{platform.name}</option>
 					))}
 				</select>
+				<div>
+					{games.platforms.map((p)=>{
+						let platform = platforms.find(platform => platform.id === p)
+						return <span key={platform.id}>{platform.name}</span>
+					})}
+				</div>
 			</div>
 			<div className="form-group">
 				<label htmlFor="image">Image</label>
-				<input type="file" className="form-control" id="image" name="img"  onChange={(e)=>{
-					setGames({...games, img: e.target.files[0]})
-				}} />
+				<input type="file" className="form-control" id="image" name="img"  onChange={handleImages} />
+				<div>
+					{games.img.map((img)=>{
+						return <img key={img.name} src={URL.createObjectURL(img)} alt=""/>
+					})}
+				</div>
 			</div>
 			<button type="submit" className="btn btn-primary" onClick={handleSubmit}>Submit</button>
 		</form>
