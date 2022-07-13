@@ -1,17 +1,23 @@
 const express = require('express');
 const router = express.Router();
 const {check} = require('express-validator');
-const {getGames, postGame, getGamesByName} = require('./functions');
+const {getGames, postGame, getGamesByName, searchByGenre, searchByPlatform} = require('./functions');
 const {validateFields} = require('../middlewares/validateFields');
 
 router.get('/', async (req, res) => {
-    const {name} = req.query;
+    const {name, genres, platform} = req.query;
     try {
-        if(!name){
+        if(!name && !genres && !platform) {
             const games = await getGames();
             res.json(games);
-        }else {
+        }else if(name && !genres && !platform) {
             const games = await getGamesByName(name);
+            res.json(games);
+        }else if(!name && genres && !platform) {
+            const games = await searchByGenre(genres);
+            res.json(games);
+        }else if(!name && !genres && platform) {
+            const games = await searchByPlatform(platform);
             res.json(games);
         }
     } catch (error) {

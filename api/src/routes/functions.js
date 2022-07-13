@@ -1,10 +1,10 @@
-const {Games, Platforms, Genres, Users, Images} = require('../db');
-const {Op} = require('sequelize');
+const { Games, Platforms, Genres, Users, Images } = require('../db');
+const { Op } = require('sequelize');
 
 //! OBTENEMOS TODOS LOS JUEGOS DE LA BASE DE DATOS
 async function getGames() {
     const games = await Games.findAll({
-        include:[
+        include: [
             {
                 model: Platforms,
                 attributes: ['name'],
@@ -32,9 +32,9 @@ async function getGames() {
 }
 //! OBTENEMOS UN JUEGO DE LA BASE DE DATOS
 
-async function gameDetail(id){
+async function gameDetail(id) {
     const game = await Games.findByPk(id, {
-        include:[
+        include: [
             {
                 model: Platforms,
                 attributes: ['name'],
@@ -56,14 +56,14 @@ async function gameDetail(id){
 
 //! OBTENEMOS JUEGOS POR NOMBRE
 
-async function getGamesByName(name){
+async function getGamesByName(name) {
     const games = await Games.findAll({
         where: {
             name: {
-                [Op.like]: `%${name}%`
+                [Op.iLike]: `%${name}%`
             }
         },
-        include:[
+        include: [
             {
                 model: Platforms,
                 attributes: ['name'],
@@ -77,6 +77,13 @@ async function getGamesByName(name){
                 through: {
                     attributes: []
                 }
+            },
+            {
+                model: Images,
+                attributes: ['alt', 'url'],
+                through: {
+                    attributes: []
+                }
             }
         ]
     })
@@ -86,11 +93,47 @@ async function getGamesByName(name){
 
 //! OBTENEMOS TODOS LOS GENEROS DE LA BASE DE DATOS
 
-async function getGenres(){
+async function getGenres() {
     const genres = await Genres.findAll();
     return genres;
 }
 
+//! BUSCAMOS LOS JUEGOS POR GENERO
+
+async function searchByGenre(genre) {
+    const games = await Games.findAll({
+        include: [
+            {
+                model: Platforms,
+                attributes: ['name'],
+                through: {
+                    attributes: []
+                }
+            },
+            {
+                model: Genres,
+                attributes: ['name'],
+                through: {
+                    attributes: []
+                },
+                where: {
+                    name: {
+                        [Op.like]: `%${genre}%`
+                    }
+                }
+            },
+            {
+                model: Images,
+                attributes: ['alt', 'url'],
+                through: {
+                    attributes: []
+                }
+            }
+        ]
+
+    })
+    return games;
+}
 
 //! OBTENEMOS TODAS LOS PLATAFORMAS DE LA BASE DE DATOS
 
@@ -99,15 +142,51 @@ async function getPlatforms() {
     return platforms;
 }
 
+//! BUSCAMOS JUEGOS POR PLATAFORMA
+
+async function searchByPlatform(platform) {
+    const games = await Games.findAll({
+        include: [
+            {
+                model: Platforms,
+                attributes: ['name'],
+                through: {
+                    attributes: []
+                },
+                where: {
+                    name: {
+                        [Op.like]: `%${platform}%`
+                    }
+                }
+            },
+            {
+                model: Genres,
+                attributes: ['name'],
+                through: {
+                    attributes: []
+                }
+            },
+            {
+                model: Images,
+                attributes: ['alt', 'url'],
+                through: {
+                    attributes: []
+                }
+            }
+        ]
+    })
+    return games;
+}
+
 //! POSTEAMOS UN JUEGO A LA BASE DE DATOS
 
 async function postGame(name, description, genres, platforms, img) {
     const imgs = await Images.bulkCreate(img);
     imgs.map(img => {
         return {
-            alt : img.alt,
-            url : img.url,
-            primary : img.primary
+            alt: img.alt,
+            url: img.url,
+            primary: img.primary
         }
     })
     const newGame = await Games.create({
@@ -170,5 +249,7 @@ module.exports = {
     gameDetail,
     getGamesByName,
     postUser,
-    loginUser
+    loginUser,
+    searchByGenre,
+    searchByPlatform
 }

@@ -1,4 +1,4 @@
-import { createAsyncThunk, createAction } from "@reduxjs/toolkit";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 const { REACT_APP_API, REACT_APP_CLOUDINARY } = process.env;
 
@@ -6,6 +6,18 @@ export const GET_GAMES = createAsyncThunk(
     'GET_GAMES', async () => {
         const response = await axios.get(REACT_APP_API);
         return await response.data;
+    }
+)
+
+export const SEARCH_GAMES_BY_NAME = createAsyncThunk(
+    'SEARCH_GAMES_BY_NAME', async (name) => {
+        try {
+            const response = await axios.get(`${REACT_APP_API}?name=${name}`);
+            console.log(response.data);
+            return await response.data;
+        } catch (error) {
+            return error;
+        }
     }
 )
 
@@ -92,6 +104,34 @@ export const ADD_GAME = createAsyncThunk(
             return {
                 ok: false,
                 msg: `${error}`
+            }
+        }
+    }
+)
+
+export const FILTER_GAMES_BY_GENRE = createAsyncThunk(
+    'FILTER_GAMES_BY_GENRE', async (genre) => {
+        try {
+            const response = await axios.get(`${REACT_APP_API}?genres=${genre}`);
+            return await response.data;
+        } catch (error) {
+            return {
+                ok: false,
+                msg: 'Error al obtener los juegos'
+            }
+        }
+    }
+) 
+
+export const FILTER_GAMES_BY_PLATFORMS = createAsyncThunk(
+    'FILTER_GAMES_BY_PLATFORMS', async (platform) => {
+        try {
+            const response = await axios.get(`${REACT_APP_API}?platform=${platform}`);
+            return await response.data;
+        } catch (error) {
+            return {
+                ok: false,
+                msg: 'Error al obtener los juegos'
             }
         }
     }
