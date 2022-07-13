@@ -3,7 +3,7 @@ import Login from './components/login/Login';
 import NewUser from './components/newUser/NewUser';
 import NewGame from './components/game/NewGame';
 import Home from './components/home/Home';
-
+import '../src/scss/main.scss'
 function App() {
   return (
     <div className='app'>

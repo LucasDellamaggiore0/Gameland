@@ -15,8 +15,8 @@ export default function SearchBar() {
     }
     
     return (
-        <div>
-            <input type="text" onChange={handleChange} placeholder="Search for a game" />
-        </div>
+        <>
+            <input className='searchbar__input' type="text" onChange={handleChange} placeholder="Search for a game" />
+        </>
     )
 }

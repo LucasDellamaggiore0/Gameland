@@ -4,15 +4,15 @@ import SearchBar from './SearchBar'
 
 export default function Nav() {
     return (
-        <nav>
+        <nav className='nav__container'>
             <Link to="/">
-                <p>GAMELAND</p>
+                <p className='title__page'>GAMELAND</p>
             </Link>
-            <div>
+            <div className='searchbar__container'>
                 <SearchBar />
             </div>
             <Link to="/login">
-                <p>Login</p>
+                <p className='login__container'>Login</p>
             </Link>
         </nav>
     )

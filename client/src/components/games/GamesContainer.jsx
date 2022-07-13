@@ -12,7 +12,7 @@ export default function GamesContainer() {
     }, [dispatch]);
     console.log(1, games.games);
     return (
-        <div>
+        <div className='games__container'>
             <GamesMap games={games.games} />
         </div>
     )

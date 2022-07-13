@@ -31,23 +31,27 @@ export default function Filters() {
     }, [dispatch, platforms.length])
 
     return (
-        <div>
-            <div className="filters">
+        <>
+            <div className="filters__container">
                 <div className="filter-by-genre">
-                    <label htmlFor="filter-by-genre">Filter by genre:</label>
+                    {/* <label htmlFor="filter-by-genre">Filter by genre:</label>
                     <select id="filter-by-genre" onChange={handleFilterGamesByGenre}>
                         <option value="">All</option>
                         {genres?.map(genre => <option key={genre.id} value={genre.name}>{genre.name}</option>)}
-                    </select>
+                    </select> */}
+                    <p className='filter__title'>Genres</p>
+                    {genres?.map(genre => <button key={genre.id} onClick={handleFilterGamesByGenre} value={genre.name}>{genre.name}</button>)}
                 </div>
                 <div className="filter-by-platforms">
-                    <label htmlFor="filter-by-platforms">Filter by platforms:</label>
+                    {/* <label htmlFor="filter-by-platforms">Filter by platforms:</label>
                     <select id="filter-by-platforms" onChange={handleFilterGamesByPlatforms}>
                         <option value="">All</option>
                         {platforms?.map(platform => <option key={platform.id} value={platform.name}>{platform.name}</option>)}
-                    </select>
+                    </select> */}
+                    <p className='filter__title'>Platforms</p>
+                    {platforms?.map(platform => <button key={platform.id} onClick={handleFilterGamesByPlatforms} value={platform.name}>{platform.name}</button>)}
                 </div>
             </div>
-        </div>
+        </>
     )
 }
