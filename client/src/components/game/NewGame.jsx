@@ -49,7 +49,7 @@ export default function NewGame() {
 	}
 
 	const handleImages = (e) => {
-		setGames({ ...games, img: [...games.img, e.target.files[0]] })
+		setGames({ ...games, img:  e.target.files[0]})
 	}
 
 	const dispatch = useDispatch();
@@ -120,11 +120,6 @@ export default function NewGame() {
 			<div className="form-group">
 				<label htmlFor="image">Image</label>
 				<input type="file" className="form-control" id="image" name="img"  onChange={handleImages} />
-				<div>
-					{games.img.map((img)=>{
-						return <img key={img.name} src={URL.createObjectURL(img)} alt=""/>
-					})}
-				</div>
 			</div>
 			<button type="submit" className="btn btn-primary" onClick={handleSubmit}>Submit</button>
 		</form>
