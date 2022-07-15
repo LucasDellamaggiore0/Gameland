@@ -1,4 +1,4 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 const { REACT_APP_API, REACT_APP_CLOUDINARY } = process.env;
 
@@ -136,3 +136,9 @@ export const FILTER_GAMES_BY_PLATFORMS = createAsyncThunk(
         }
     }
 )
+
+export const ORDER_GAMES = createAction('ORDER_GAMES', (gamesOrder) => {
+    return {
+        payload: gamesOrder
+    }
+});

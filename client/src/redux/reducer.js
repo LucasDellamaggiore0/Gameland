@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { GET_GAMES, LOG_IN, CREATE_USER, ADD_GAME, GET_GENRES, GET_PLATFORMS, SEARCH_GAMES_BY_NAME, FILTER_GAMES_BY_GENRE, FILTER_GAMES_BY_PLATFORMS } from "./actions";
+import { GET_GAMES, LOG_IN, CREATE_USER, ADD_GAME, GET_GENRES, GET_PLATFORMS, SEARCH_GAMES_BY_NAME, FILTER_GAMES_BY_GENRE, FILTER_GAMES_BY_PLATFORMS, ORDER_GAMES } from "./actions";
 
 const initialState = {
     games: [],
@@ -38,5 +38,8 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     builder.addCase(FILTER_GAMES_BY_PLATFORMS.fulfilled, (state, action) => {
         state.games = [...action.payload];
+    })
+    builder.addCase(ORDER_GAMES, (state, action) => {
+        state.games = action.payload
     })
 });
