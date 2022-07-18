@@ -3,7 +3,7 @@ import GameCard from './GameCard'
 
 export default function GamesMap({ games }) {
     return (
-        <>
+        <div className='games__container'>
             {
                 games.length > 0 ? games?.map(game => {
                     let name = game.name;
@@ -30,6 +30,6 @@ export default function GamesMap({ games }) {
                 }
                 ) : <h1>No Games</h1>
             }
-        </>
+        </div>
     )
 }

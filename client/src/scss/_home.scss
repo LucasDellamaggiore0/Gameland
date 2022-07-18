@@ -64,14 +64,27 @@
     }
 }
 
-.games__container{
+.games--home__container{
     grid-area: main;
     display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    // min-height: 100%;
+    flex-direction: column;
     background-color: black;
-    .gamecard__container{
+    .games-orders__container{
+        margin-top: 2rem;
+        width: 50%;
+        h1{
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            font-size: 2rem;
+            border-bottom: 2px solid #C6EF24;
+        }
+    }
+    .games__container{
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        .gamecard__container{
         height: 60vh;
         width: 32%;
         border: 1px solid black;
@@ -121,10 +134,11 @@
                 text-align: center;
                 width: 100%;
                 margin-bottom: .5rem;
+                }
             }
         }
+        .gamecard__container:hover{transform: scale(1.05)};
     }
-    .gamecard__container:hover{transform: scale(1.05);}
 }
 
 .filters__container{
@@ -189,7 +203,3 @@
     }
 }
 
-
-
-
-//! lazy-load ---> investigar
