@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { FILTER_GAMES_BY_GENRE, FILTER_GAMES_BY_PLATFORMS, GET_GENRES, GET_PLATFORMS } from '../../redux/actions'
 export default function Filters() {
@@ -6,7 +6,12 @@ export default function Filters() {
     const {genres} = useSelector(state => state.reducer)
     const {platforms} = useSelector(state => state.reducer)
     
-    
+    const [currentGenre, setCurrentGenre] = useState([])
+    const [showGenre, setShowGenre] = useState(false)
+    const [currentPlatform, setCurrentPlatform] = useState([])
+    const [showPlatform, setShowPlatform] = useState(false)
+
+
     const handleFilterGamesByGenre = (e) => {
         e.preventDefault()
         const genre = e.target.value
@@ -17,29 +22,61 @@ export default function Filters() {
         const platform = e.target.value
         dispatch(FILTER_GAMES_BY_PLATFORMS(platform))
     }
+
+    const handleShowGenre = (e) => {
+        // e.preventDefault()
+        setShowGenre(!showGenre)
+    }
+    const handleShowPlatform = (e) => {
+        // e.preventDefault()
+        setShowPlatform(!showPlatform)
+    }
+
+    
     useEffect(() => {
-        if(genres.length === 0) {
-            dispatch(GET_GENRES())
-        }
-    }, [dispatch, genres.length])
+        dispatch(GET_GENRES())
+    }, [dispatch])
 
     useEffect(() => {
-        if(platforms.length === 0) {
-            dispatch(GET_PLATFORMS())
+        dispatch(GET_PLATFORMS())
+    }, [dispatch])
+
+    useEffect(() => {
+        setCurrentGenre(genres.slice(0, genres.length / 2))
+        setCurrentPlatform(platforms.slice(0, platforms.length / 2))
+    }, [genres, platforms])
+
+    useEffect(() => {
+        if(showGenre) {
+            setCurrentGenre(genres)
+        }else{
+            setCurrentGenre(genres.slice(0, genres.length / 2))
         }
-    }, [dispatch, platforms.length])
+    }, [showGenre])
 
-
+    useEffect(() => {
+        if(showPlatform) {
+            setCurrentPlatform(platforms)
+        }else{
+            setCurrentPlatform(platforms.slice(0, platforms.length / 2))
+        }
+    }, [showPlatform])
     return (
         <>
             <div className="filters__container">
                 <div className="filter-by-genre">
                     <p className='filter__title'>Genres</p>
-                    {genres?.map(genre => <button key={genre.id} onClick={handleFilterGamesByGenre} value={genre.name}>{genre.name}</button>)}
+                    {currentGenre?.map(genre => <button key={genre.id} onClick={handleFilterGamesByGenre} value={genre.name}>{genre.name}</button>)}
+                    <button onClick={handleShowGenre}>{
+                        showGenre ? 'Hide' : 'Show all genres'
+                    }</button>
                 </div>
                 <div className="filter-by-platforms">
                     <p className='filter__title'>Platforms</p>
-                    {platforms?.map(platform => <button key={platform.id} onClick={handleFilterGamesByPlatforms} value={platform.name}>{platform.name}</button>)}
+                    {currentPlatform?.map(platform => <button key={platform.id} onClick={handleFilterGamesByPlatforms} value={platform.name}>{platform.name}</button>)}
+                    <button onClick={handleShowPlatform}>{
+                        showPlatform ? 'Hide': 'Show all platforms'
+                    }</button>
                 </div>
             </div>
         </>

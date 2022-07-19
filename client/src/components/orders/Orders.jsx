@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { ORDER_GAMES} from '../../redux/actions';
-export default function Orders({games}) {
+import {FaSortAlphaDownAlt, FaSortAlphaDown} from 'react-icons/fa';
+
+export default function Orders({games}) {    
     const dispatch = useDispatch();
     const [valueButton, setValueButton] = useState('ASC');
     const handleOrderAlpha = () => {
@@ -31,7 +33,7 @@ export default function Orders({games}) {
         <div>
             <p>Sort by: </p>
             <button onClick={handleOrderAlpha} value={valueButton}>
-                {valueButton === 'ASC' ? 'Nombre 🡅' : 'Nombre 🡇'}
+                {valueButton === 'ASC' ? <FaSortAlphaDownAlt/> : <FaSortAlphaDown/>}
             </button>
         </div>
     )
