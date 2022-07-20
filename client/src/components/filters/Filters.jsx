@@ -52,7 +52,7 @@ export default function Filters() {
         }else{
             setCurrentGenre(genres.slice(0, genres.length / 2))
         }
-    }, [showGenre])
+    }, [showGenre, genres])
 
     useEffect(() => {
         if(showPlatform) {
@@ -60,7 +60,7 @@ export default function Filters() {
         }else{
             setCurrentPlatform(platforms.slice(0, platforms.length / 2))
         }
-    }, [showPlatform])
+    }, [showPlatform, platforms])
     return (
         <>
             <div className="filters__container">

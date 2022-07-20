@@ -72,7 +72,7 @@ export default function NewGame() {
 				errorGame : game.msg
 			})
 		}
-	}, [game])
+	}, [game, errors])
 	return(
 		<form>
 			{errors.errorGame && <p>{errors.errorGame}</p>}

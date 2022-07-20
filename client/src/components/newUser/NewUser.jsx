@@ -49,7 +49,7 @@ export default function NewUser() {
                 errorUser : newUserResponse.msg
             })
         }
-    }, [newUserResponse])
+    }, [newUserResponse, errors, navigate])
     return (
         <form onSubmit={handleSubmit}>
             {errors.errorUser && <p>{errors.errorUser}</p>}

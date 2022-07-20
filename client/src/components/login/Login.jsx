@@ -43,7 +43,7 @@ export default function Login() {
                 errorUser : userResponse.msg
             })
         }
-    }, [userResponse])
+    }, [userResponse, errors, navigate])
     return (
         <form onSubmit={handleSubmit}>
             {errors.errorUser && <p>{errors.errorUser}</p>}
