@@ -5,6 +5,7 @@ import NewGame from './components/game/NewGame';
 import Home from './components/home/Home';
 import '../src/scss/main.scss'
 import AddPlatforms from './components/platforms/AddPlatforms';
+import AddGenres from './components/genres/AddGenres';
 function App() {
   return (
     <div className='app'>
