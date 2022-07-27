@@ -90,13 +90,13 @@ export default function NewGame() {
 				<label htmlFor="genres">Genres</label>
 				<select className="form-control" id="genres" name="genres" value={games.genres} onChange={handleGenres} multiple={true}>
 					<option value="">Select a genre</option>
-					{genres.map(genre => (
+					{genres?.map(genre => (
 						<option key={genre.id} value={genre.id}>{genre.name}</option>
 					))}
 				</select>
 				{errors.genres && <small>{errors.genres}</small>}
 				<div>
-					{games.genres.map((g)=>{
+					{games.genres?.map((g)=>{
 						let genre = genres.find(genre => genre.id === g)
 						return <span key={genre.id}>{genre.name}</span>
 					})}
@@ -106,12 +106,12 @@ export default function NewGame() {
 				<label htmlFor="platforms">Platforms</label>
 				<select className="form-control" id="platforms" name="platforms" value={games.platforms} onChange={handlePlatforms} multiple={true}>
 					<option value="">Select a platform</option>
-					{platforms.map(platform => (
+					{platforms?.map(platform => (
 						<option key={platform.id} value={platform.id}>{platform.name}</option>
 					))}
 				</select>
 				<div>
-					{games.platforms.map((p)=>{
+					{games.platforms?.map((p)=>{
 						let platform = platforms.find(platform => platform.id === p)
 						return <span key={platform.id}>{platform.name}</span>
 					})}
