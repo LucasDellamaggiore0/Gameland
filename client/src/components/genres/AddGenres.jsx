@@ -11,7 +11,7 @@ export default function AddPlatforms() {
     })
     const [errors, setErrors] = useState('')
     const handleChange = (e) => {
-        setPlatforms({ ...genres, [e.target.name]: e.target.value })
+        setGenres({ ...genres, [e.target.name]: e.target.value })
         let objErrors = validate({
             ...genres,
             [e.target.name]: e.target.value
