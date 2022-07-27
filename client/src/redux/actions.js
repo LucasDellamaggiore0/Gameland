@@ -37,8 +37,8 @@ export const GET_GENRES = createAsyncThunk(
 
 export const ADD_GENRES = createAsyncThunk(
     'ADD_GENRES', async (genre) => {
+        console.log(BASE_URL);
         try {
-            console.log(BASE_URL);
             const response = await axios.post(`${BASE_URL}genres`, genre);
             return await response.data;
         } catch (error) {
