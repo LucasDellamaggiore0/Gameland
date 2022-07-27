@@ -1,10 +1,10 @@
 import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-const { REACT_APP_API, REACT_APP_CLOUDINARY } = process.env;
+const { BASE_URL, REACT_APP_CLOUDINARY } = process.env;
 
 export const GET_GAMES = createAsyncThunk(
     'GET_GAMES', async () => {
-        const response = await axios.get(REACT_APP_API);
+        const response = await axios.get(BASE_URL);
         return await response.data;
     }
 )
@@ -12,7 +12,7 @@ export const GET_GAMES = createAsyncThunk(
 export const SEARCH_GAMES_BY_NAME = createAsyncThunk(
     'SEARCH_GAMES_BY_NAME', async (name) => {
         try {
-            const response = await axios.get(`${REACT_APP_API}?name=${name}`);
+            const response = await axios.get(`${BASE_URL}?name=${name}`);
             console.log(response.data);
             return await response.data;
         } catch (error) {
@@ -24,7 +24,7 @@ export const SEARCH_GAMES_BY_NAME = createAsyncThunk(
 export const GET_GENRES = createAsyncThunk(
     'GET_GENRES', async () => {
         try {
-            const response = await axios.get(`${REACT_APP_API}genres`);
+            const response = await axios.get(`${BASE_URL}genres`);
             return await response.data;
         } catch (error) {
             return {
@@ -38,7 +38,7 @@ export const GET_GENRES = createAsyncThunk(
 export const ADD_GENRES = createAsyncThunk(
     'ADD_GENRES', async (genre) => {
         try {
-            const response = await axios.post(`${REACT_APP_API}genres`, genre);
+            const response = await axios.post(`${BASE_URL}genres`, genre);
             return await response.data;
         } catch (error) {
             return {
@@ -52,7 +52,7 @@ export const ADD_GENRES = createAsyncThunk(
 export const GET_PLATFORMS = createAsyncThunk(
     'GET_PLATFORMS', async () => {
         try {
-            const response = await axios.get(`${REACT_APP_API}platforms`);
+            const response = await axios.get(`${BASE_URL}platforms`);
             return await response.data;
         } catch (error) {
             return {
@@ -66,7 +66,7 @@ export const GET_PLATFORMS = createAsyncThunk(
 export const ADD_PLATFORM = createAsyncThunk(
     'ADD_PLATFORM', async (platform) => {
         try {
-            const response = await axios.post(`${REACT_APP_API}platforms`, platform);
+            const response = await axios.post(`${BASE_URL}platforms`, platform);
             return await response.data;
         } catch (error) {
             return {
@@ -80,7 +80,7 @@ export const ADD_PLATFORM = createAsyncThunk(
 export const LOG_IN = createAsyncThunk(
     'LOG_IN', async (user) => {
         try {
-            const response = await axios.post(REACT_APP_API + `auth/signin`, user);
+            const response = await axios.post(BASE_URL + `auth/signin`, user);
             localStorage.setItem('token', response.data.token);
             return await response.data;
         } catch (error) {
@@ -95,7 +95,7 @@ export const LOG_IN = createAsyncThunk(
 export const CREATE_USER = createAsyncThunk(
     'CREATE_USER', async (user) => {
         try {
-            const response = await axios.post(REACT_APP_API + `users`, user);
+            const response = await axios.post(BASE_URL + `users`, user);
             return await response.data;
         } catch (error) {
             return {
@@ -122,7 +122,7 @@ export const ADD_GAME = createAsyncThunk(
             });
             
 
-            const response = await axios.post(REACT_APP_API, values);
+            const response = await axios.post(BASE_URL, values);
             return {
                 ok: true,
                 msg: 'Juego agregado',
@@ -140,7 +140,7 @@ export const ADD_GAME = createAsyncThunk(
 export const FILTER_GAMES_BY_GENRE = createAsyncThunk(
     'FILTER_GAMES_BY_GENRE', async (genre) => {
         try {
-            const response = await axios.get(`${REACT_APP_API}?genres=${genre}`);
+            const response = await axios.get(`${BASE_URL}?genres=${genre}`);
             return await response.data;
         } catch (error) {
             return {
@@ -154,7 +154,7 @@ export const FILTER_GAMES_BY_GENRE = createAsyncThunk(
 export const FILTER_GAMES_BY_PLATFORMS = createAsyncThunk(
     'FILTER_GAMES_BY_PLATFORMS', async (platform) => {
         try {
-            const response = await axios.get(`${REACT_APP_API}?platform=${platform}`);
+            const response = await axios.get(`${BASE_URL}?platform=${platform}`);
             return await response.data;
         } catch (error) {
             return {
