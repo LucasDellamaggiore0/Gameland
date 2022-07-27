@@ -14,6 +14,7 @@ function App() {
         <Route path="/createAccount" element={<NewUser />} />
         <Route path='/addGame' element={<NewGame/>}/>
         <Route path='/addPlatform' element={<AddPlatforms/>}/>
+        <Route path='/addGenres' element={<AddGenres/>}/>
       </Routes>
     </div>
   );

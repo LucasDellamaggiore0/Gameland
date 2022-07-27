@@ -35,6 +35,20 @@ export const GET_GENRES = createAsyncThunk(
     }
 )
 
+export const ADD_GENRES = createAsyncThunk(
+    'ADD_GENRES', async (genre) => {
+        try {
+            const response = await axios.post(`${REACT_APP_API}genres`, genre);
+            return await response.data;
+        } catch (error) {
+            return {
+                ok: false,
+                msg: 'Error al agregar el género'
+            }
+        }
+    }
+)
+
 export const GET_PLATFORMS = createAsyncThunk(
     'GET_PLATFORMS', async () => {
         try {
