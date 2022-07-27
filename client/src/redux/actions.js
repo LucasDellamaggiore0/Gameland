@@ -49,6 +49,20 @@ export const GET_PLATFORMS = createAsyncThunk(
     }
 )
 
+export const ADD_PLATFORM = createAsyncThunk(
+    'ADD_PLATFORM', async (platform) => {
+        try {
+            const response = await axios.post(`${REACT_APP_API}platforms`, platform);
+            return await response.data;
+        } catch (error) {
+            return {
+                ok: false,
+                msg: 'Error al agregar la plataforma'
+            }
+        }
+    }
+)
+
 export const LOG_IN = createAsyncThunk(
     'LOG_IN', async (user) => {
         try {

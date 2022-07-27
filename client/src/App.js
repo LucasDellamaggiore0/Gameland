@@ -4,6 +4,7 @@ import NewUser from './components/newUser/NewUser';
 import NewGame from './components/game/NewGame';
 import Home from './components/home/Home';
 import '../src/scss/main.scss'
+import AddPlatforms from './components/platforms/AddPlatforms';
 function App() {
   return (
     <div className='app'>
@@ -12,6 +13,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/createAccount" element={<NewUser />} />
         <Route path='/addGame' element={<NewGame/>}/>
+        <Route path='/addPlatform' element={<AddPlatforms/>}/>
       </Routes>
     </div>
   );
