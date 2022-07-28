@@ -9,6 +9,17 @@ export const GET_GAMES = createAsyncThunk(
     }
 )
 
+export const GET_GAME_BY_ID = createAsyncThunk(
+    'GET_GAME_BY_ID', async (id) => {
+        try {
+            const response = await axios.get(`${REACT_APP_URL}game/${id}`);
+            return await response.data;
+        } catch (error) {
+            return error;
+        }
+    }
+)
+
 export const SEARCH_GAMES_BY_NAME = createAsyncThunk(
     'SEARCH_GAMES_BY_NAME', async (name) => {
         try {

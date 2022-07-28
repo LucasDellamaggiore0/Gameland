@@ -25,7 +25,7 @@ export default function GamesMap({ games }) {
                         return platform.name;
                     })
                     return (
-                        <GameCard key={id} name={name} url={url} alt = {alt} genres={genres} platforms = {platforms}/>
+                        <GameCard key={id} name={name} url={url} alt = {alt} genres={genres} platforms = {platforms} id={id}/>
                     )
                 }
                 ) : <h1>No Games</h1>

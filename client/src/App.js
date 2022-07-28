@@ -6,6 +6,7 @@ import Home from './components/home/Home';
 import '../src/scss/main.scss'
 import AddPlatforms from './components/platforms/AddPlatforms';
 import AddGenres from './components/genres/AddGenres';
+import GameDetails from './components/gameDetail/GameDetails';
 function App() {
   return (
     <div className='app'>
@@ -16,6 +17,7 @@ function App() {
         <Route path='/addGame' element={<NewGame/>}/>
         <Route path='/addPlatform' element={<AddPlatforms/>}/>
         <Route path='/addGenres' element={<AddGenres/>}/>
+        <Route path='/game/:id' element={<GameDetails/>}/>
       </Routes>
     </div>
   );

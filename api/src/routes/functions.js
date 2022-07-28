@@ -48,6 +48,13 @@ async function gameDetail(id) {
                 through: {
                     attributes: []
                 }
+            },
+            {
+                model: Images,
+                attributes: ['alt', 'url'],
+                through: {
+                    attributes: []
+                }
             }
         ]
     })
