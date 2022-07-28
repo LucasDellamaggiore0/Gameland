@@ -72,7 +72,7 @@ export default function NewGame() {
 				errorGame : game.msg
 			})
 		}
-	}, [game, errors])
+	}, [game]) // eslint-disable-line react-hooks/exhaustive-deps
 	return(
 		<form>
 			{errors.errorGame && <p>{errors.errorGame}</p>}

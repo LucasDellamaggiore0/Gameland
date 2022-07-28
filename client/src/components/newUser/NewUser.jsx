@@ -49,7 +49,7 @@ export default function NewUser() {
                 errorUser : newUserResponse.msg
             })
         }
-    }, [newUserResponse, errors, navigate])
+    }, [newUserResponse, navigate]) // eslint-disable-line react-hooks/exhaustive-deps
     return (
         <form onSubmit={handleSubmit}>
             {errors.errorUser && <p>{errors.errorUser}</p>}
