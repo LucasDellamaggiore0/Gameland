@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+.signin{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    .form-signin__container{
+        width: 50%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        border: 1px solid black;
+        background-color: #1F1F1F;
+        text-align: justify;
+        .form-group__container{
+            width: 100%;
+            height: auto;
+            margin-left: 19rem;
+            .form-group{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                width: 100%;
+                margin-left: 1.5rem;
+                label{
+                    width: 40%;
+                    color: white;
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 18px;
+                    margin-right: 2rem;
+                    margin-top: 20px;
+                }
+                input{
+                    width: 50%;
+                    height: 1.3rem;
+                    padding: .5%;
+                    border-radius: .4rem;
+                    border: none;
+                    margin-top: 10px;
+                }
+                input:focus{
+                    outline: none;
+                }
+                .form-msg{
+                    margin-top: 10px;
+                    color: red;
+                    font-size: 16px;
+                    font-family: 'Poppins', sans-serif;
+                    font-weight: 100;
+                }
+            }
+        }
+        .signin-title{
+            h1{
+                color: #C6EF24;
+                font-size: 32px;
+                font-family: 'MuseoModerno', cursive;
+            }
+        }
+        .signin-btn{
+            width: 28%;
+            padding: .8%;
+            border: none;
+            border-radius: 1.2rem;
+            background-color: black;
+            color: #C6EF24;
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .signin-btn:hover{
+            background-color: #C6EF24;
+            color: black;
+        }
+    }
+}
