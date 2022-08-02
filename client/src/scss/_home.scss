@@ -58,8 +58,7 @@
                 text-align: center;
                 font-family: 'MuseoModerno', cursive;
                 font-size: 2.5rem;
-                margin-left: .5rem;
-                margin-right: 1rem;
+                margin-left: 1rem;
             }
         }
         .filter-by-genre{
@@ -121,7 +120,8 @@
         flex-direction: column;
         background-color: black;
         .games-orders__container{
-            margin-top: 9%;
+            margin-top:10%;
+            margin-left: 1%;
             width: 50%;
             h1{
                 color: white;
@@ -136,7 +136,7 @@
             flex-wrap: wrap;
             justify-content: space-around;
             .gamecard__container{
-                width: 30%;
+                width: 32%;
                 height: auto;
                 border-radius: .5rem;
                 background-color: #1F1F1F;
@@ -177,7 +177,7 @@
                         color: white;
                         font-family: 'Poppins', sans-serif;
                         font-weight: bold;
-                        font-size: 21px;
+                        font-size: 20px;
                     }
                 }
             }

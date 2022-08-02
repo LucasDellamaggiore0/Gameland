@@ -29,8 +29,8 @@ export default function GameDetails() {
             </section>
             <section className='game_detail_genres--container'>
                 <p className='game_detail--genres'>{game.Genres?.map(genre => {
-                    return genre.name;
-                }).join(', ')}</p>
+                    return <p>{genre.name}</p>
+                })}</p>
             </section>
         </div>
     )
