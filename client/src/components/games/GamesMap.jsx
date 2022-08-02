@@ -1,5 +1,8 @@
 import React from 'react'
 import GameCard from './GameCard'
+import { AiFillAndroid, AiFillWindows } from 'react-icons/ai'
+import { FaXbox } from 'react-icons/fa'
+import { SiPlaystation3, SiPlaystation4, SiPlaystation5 } from 'react-icons/si'
 
 export default function GamesMap({ games }) {
     return (
@@ -9,20 +12,33 @@ export default function GamesMap({ games }) {
                     let name = game.name;
                     let id = game.id;
                     let url = game.Images?.map(image => {
-                        // let url = image.url;
                         return image.url;
                     });
                     let alt = game.Images?.map(image => {
-                        // let alt = image.alt;
                         return image.alt;
                     })
                     let genres = game.Genres?.map(genre => {
-                        // let genres = genre.name;
                         return genre.name;
                     })
                     let platforms = game.Platforms?.map(platform => {
-                        // let platforms = platform.name;
-                        return platform.name;
+                        if(platform.name === 'PC'){
+                            return <AiFillWindows />
+                        }
+                        if(platform.name === 'XBOX'){
+                            return <FaXbox />
+                        }
+                        if(platform.name === 'PS3'){
+                            return <SiPlaystation3 />
+                        }
+                        if(platform.name === 'PS4'){
+                            return <SiPlaystation4 />
+                        }
+                        if(platform.name === 'PS5'){
+                            return <SiPlaystation5 />
+                        }
+                        if(platform.name === 'Android'){
+                            return <AiFillAndroid />
+                        }
                     })
                     return (
                         <GameCard key={id} name={name} url={url} alt = {alt} genres={genres} platforms = {platforms} id={id}/>

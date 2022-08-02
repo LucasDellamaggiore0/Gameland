@@ -3,9 +3,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { GET_GAME_BY_ID } from '../../redux/actions'
 import { useParams } from 'react-router-dom'
-import {AiFillWindows, AiFillAndroid} from 'react-icons/ai'
-import {FaXbox} from 'react-icons/fa'
-import {SiPlaystation3, SiPlaystation4, SiPlaystation5} from 'react-icons/si'
 import '../../scss/_gameDetail.scss'
 
 export default function GameDetails() {
@@ -26,30 +23,6 @@ export default function GameDetails() {
                 })} alt={game.Images?.map(image => {
                     return image.alt;
                 })}/>
-            </section>
-            <section className='game_detail_platforms--container'>
-                {
-                    game.Platforms?.map(platform => { // eslint-disable-line
-                        if(platform.name === 'PC'){
-                            return <AiFillWindows/>
-                        }
-                        if(platform.name === 'XBOX'){
-                            return <FaXbox/>
-                        }
-                        if(platform.name === 'PS3'){
-                            return <SiPlaystation3/>
-                        }
-                        if(platform.name === 'PS4'){
-                            return <SiPlaystation4/>
-                        }
-                        if(platform.name === 'PS5'){
-                            return <SiPlaystation5/>
-                        }
-                        if(platform.name === 'Android'){
-                            return <AiFillAndroid/>
-                        }
-                    })
-                }
             </section>
             <section className='game_detail_description--container'>
                 <p className='game_detail--description'>{game.description}</p>  

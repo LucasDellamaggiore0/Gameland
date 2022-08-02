@@ -9,7 +9,7 @@ import AddGenres from './components/genres/AddGenres';
 import GameDetails from './components/gameDetail/GameDetails';
 function App() {
   return (
-    <div className='app'>
+    <div className='App'>
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/login" element={<Login />} />

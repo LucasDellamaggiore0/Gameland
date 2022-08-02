@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import {useDispatch, useSelector} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { FILTER_GAMES_BY_GENRE, FILTER_GAMES_BY_PLATFORMS, GET_GENRES, GET_PLATFORMS } from '../../redux/actions'
 export default function Filters() {
     const dispatch = useDispatch()
-    const {genres} = useSelector(state => state.reducer)
-    const {platforms} = useSelector(state => state.reducer)
-    
+    const { genres } = useSelector(state => state.reducer)
+    const { platforms } = useSelector(state => state.reducer)
+
     const [currentGenre, setCurrentGenre] = useState([])
     const [showGenre, setShowGenre] = useState(false)
     const [currentPlatform, setCurrentPlatform] = useState([])
@@ -32,7 +33,7 @@ export default function Filters() {
         setShowPlatform(!showPlatform)
     }
 
-    
+
     useEffect(() => {
         dispatch(GET_GENRES())
     }, [dispatch])
@@ -47,23 +48,28 @@ export default function Filters() {
     }, [genres, platforms])
 
     useEffect(() => {
-        if(showGenre) {
+        if (showGenre) {
             setCurrentGenre(genres)
-        }else{
+        } else {
             setCurrentGenre(genres.slice(0, genres.length / 2))
         }
     }, [showGenre, genres])
 
     useEffect(() => {
-        if(showPlatform) {
+        if (showPlatform) {
             setCurrentPlatform(platforms)
-        }else{
+        } else {
             setCurrentPlatform(platforms.slice(0, platforms.length / 2))
         }
     }, [showPlatform, platforms])
     return (
         <>
             <div className="filters__container">
+                <div className='title__page--container'>
+                    <Link to="/">
+                        <p className='title__page'>GAMELAND</p>
+                    </Link>
+                </div>
                 <div className="filter-by-genre">
                     <p className='filter__title'>Genres</p>
                     {currentGenre?.map(genre => <button key={genre.id} onClick={handleFilterGamesByGenre} value={genre.name}>{genre.name}</button>)}
@@ -75,7 +81,7 @@ export default function Filters() {
                     <p className='filter__title'>Platforms</p>
                     {currentPlatform?.map(platform => <button key={platform.id} onClick={handleFilterGamesByPlatforms} value={platform.name}>{platform.name}</button>)}
                     <button onClick={handleShowPlatform}>{
-                        showPlatform ? 'Hide': 'Show all platforms'
+                        showPlatform ? 'Hide' : 'Show all platforms'
                     }</button>
                 </div>
             </div>
