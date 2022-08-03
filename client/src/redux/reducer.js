@@ -6,7 +6,9 @@ const initialState = {
     genres: [],
     platforms: [],
     game: {},
-    userResponse : {ok : ''},
+    userResponse : {
+
+    },
     newUserResponse: {ok: ''}
 }
 

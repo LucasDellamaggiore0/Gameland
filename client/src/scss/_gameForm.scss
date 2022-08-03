@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+.form__game--container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    .form__game{
+        width: 50%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        border: 1px solid black;
+        background-color: #1F1F1F;
+        text-align: justify;
+        .form__title--container{
+            h2{
+                color: #C6EF24;
+                font-size: 32px;
+                font-family: 'MuseoModerno', cursive;
+            }
+        }
+        .form__group--container{
+            width: 100%;
+            height: auto;
+            margin-left: 19rem;
+            .form-group{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                width: 100%;
+                margin-left: 1.5rem;
+                label{
+                    width: 40%;
+                    color: white;
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 18px;
+                    margin-right: 2rem;
+                    margin-top: 20px;
+                }
+                .select__options{
+                    font-family: "Poppins", sans-serif;
+                    color: #C6EF24;
+                    display: flex;
+                    justify-content: space-between;
+                    width: 25%;
+                    margin-top: 2%;
+                    span{
+                        background-color: black;
+                        border: 1px solid black;
+                        border-radius: 12px;
+                        width: 100%;
+                        text-align: center;
+                        padding: 2%;
+                        margin-right: 10%;
+                    }
+                }
+                textarea{
+                    width: 60%;
+                    height: 200px;
+                    font-family: "Poppins", sans-serif;
+                    resize: none;
+                }
+                #image{
+                    color: #C6EF24;
+                    font-family: "Poppins", sans-serif;
+                }
+                small{
+                    margin-top: 10px;
+                    color: red;
+                    font-size: 16px;
+                    font-family: 'Poppins', sans-serif;
+                    font-weight: 100;
+                }
+            }
+        }
+    }
+
+}

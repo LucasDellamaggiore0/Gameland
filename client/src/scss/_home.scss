@@ -76,6 +76,9 @@
                 width: 100%;
             }
             button:focus{color: #A1FC2E;}
+            .show__all--genres{
+                font-size: 16px;
+            }
             .filter__title{
                 color: white;
                 font-family: 'Poppins', sans-serif;
@@ -93,6 +96,9 @@
             justify-content: center;
             align-items: center;
             width: 80%;
+            .show__all--platforms{
+                font-size: 16px;
+            }
             button{
                 background-color: black;
                 color: white;
@@ -157,7 +163,7 @@
                 }
                 .game__platforms--container{
                     display: flex;
-                    justify-content: start;
+                    justify-content: flex-start;
                     width: 90%;
                     margin-left: 4%;
                     margin-top: 2%;

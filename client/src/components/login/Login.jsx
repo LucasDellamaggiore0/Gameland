@@ -37,6 +37,8 @@ export default function Login() {
     }
     useEffect(()=>{
         if(userResponse.ok){
+            console.log(1, userResponse)
+            console.log(2, userResponse.user.name)
             navigate('/')
         }else{
             setErrors({
