@@ -8,6 +8,7 @@ import Orders from '../orders/Orders';
 export default function GamesContainer() {
     const dispatch = useDispatch();
     const {games} = useSelector(state => state.reducer);
+    
     useEffect(() => {
         dispatch(GET_GAMES());
     }, [dispatch]);

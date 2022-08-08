@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { FILTER_GAMES_BY_GENRE, FILTER_GAMES_BY_PLATFORMS, GET_GENRES, GET_PLATFORMS } from '../../redux/actions'
-import {GrAddCircle} from 'react-icons/gr'
 export default function Filters() {
     const dispatch = useDispatch()
     const { genres } = useSelector(state => state.reducer)
@@ -67,7 +66,7 @@ export default function Filters() {
         <>
             <div className="filters__container">
                 <div className='title__page--container'>
-                    <Link to="/">
+                    <Link to='/'>
                         <p className='title__page'>GAMELAND</p>
                     </Link>
                 </div>

@@ -65,7 +65,7 @@ export default function Login() {
                 <Link to='/createAccount'>
                     <p className='form-msg-signin'>Don't have an account yet? Sign up</p>
                 </Link>
-                {errors.errorUser && <p>{errors.errorUser}</p>}
+                {errors.errorUser && <p className='form-msg'>{errors.errorUser}</p>}
             </form>
         </div>
     )

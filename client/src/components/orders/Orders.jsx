@@ -30,10 +30,10 @@ export default function Orders({games}) {
         }
     }
     return (
-        <div>
+        <div className='orders__container'>
             <p>Sort by: </p>
             <button onClick={handleOrderAlpha} value={valueButton}>
-                {valueButton === 'ASC' ? <FaSortAlphaDownAlt/> : <FaSortAlphaDown/>}
+                {valueButton === 'ASC' ? 'Title A-Z' : 'Title Z-A'}
             </button>
         </div>
     )
