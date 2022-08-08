@@ -14,7 +14,7 @@ export default function Home() {
 	useEffect(() => {
 		dispatch(GET_GAMES());
 	} , [games]);
-	if(!loading) {
+	if(loading) {
 		return <Loader />
 	}else{
 		return (
