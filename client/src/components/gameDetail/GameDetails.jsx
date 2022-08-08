@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
-import { GET_GAME_BY_ID } from '../../redux/actions'
+import { GET_GAME_BY_ID, CLEAN_UP_DETAILS } from '../../redux/actions'
 import { useParams } from 'react-router-dom'
 import '../../scss/_gameDetail.scss'
 
@@ -12,6 +12,10 @@ export default function GameDetails() {
 
     useEffect(() => {
         dispatch(GET_GAME_BY_ID(id));
+        return () => {
+            dispatch(CLEAN_UP_DETAILS());
+        }
+
     }, [dispatch, id]);
     
     return (

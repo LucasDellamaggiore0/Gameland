@@ -182,3 +182,9 @@ export const ORDER_GAMES = createAction('ORDER_GAMES', (gamesOrder) => {
         payload: gamesOrder
     }
 });
+
+export const CLEAN_UP_DETAILS = createAction('CLEAN_UP_DETAILS', () => {
+    return {
+        payload: false
+    }
+});
