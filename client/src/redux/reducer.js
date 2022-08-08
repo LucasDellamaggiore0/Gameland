@@ -9,13 +9,15 @@ const initialState = {
     userResponse : {
 
     },
-    newUserResponse: {ok: ''}
+    newUserResponse: {ok: ''},
+    loading: true,
 }
 
 
 export const reducer = createReducer(initialState, (builder) => {
     builder.addCase(GET_GAMES.fulfilled, (state, action) => {
         state.games = action.payload;
+        state.loading = false;
     })
     builder.addCase(LOG_IN.fulfilled, (state, action) => {
         state.userResponse = {...action.payload};
