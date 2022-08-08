@@ -4,10 +4,11 @@ import { useEffect } from 'react'
 import { GET_GAME_BY_ID, CLEAN_UP_DETAILS } from '../../redux/actions'
 import { useParams } from 'react-router-dom'
 import '../../scss/_gameDetail.scss'
+import Loader from '../loader/Loader'
 
 export default function GameDetails() {
     const dispatch = useDispatch();
-    const {game} = useSelector(state => state.reducer);
+    const {game, loading} = useSelector(state => state.reducer);
     const {id} = useParams();
 
     useEffect(() => {
@@ -17,25 +18,28 @@ export default function GameDetails() {
         }
 
     }, [dispatch, id]);
-    
-    return (
-        <div className='game_detail--container'>
-            <h2 className='game_detail--title'>{game.name}</h2>
-            <section className='game_detail_img--container'>
-                <img className='game_detail--img' src={game.Images?.map(image => {
-                    return image.url;
-                })} alt={game.Images?.map(image => {
-                    return image.alt;
-                })}/>
-            </section>
-            <section className='game_detail_description--container'>
-                <p className='game_detail--description'>{game.description}</p>  
-            </section>
-            <section className='game_detail_genres--container'>
-                <p className='game_detail--genres'>{game.Genres?.map(genre => {
-                    return <p>{genre.name}</p>
-                })}</p>
-            </section>
-        </div>
-    )
+    if(loading) {
+        return <Loader />
+    }else{
+        return (
+            <div className='game_detail--container'>
+                <h2 className='game_detail--title'>{game.name}</h2>
+                <section className='game_detail_img--container'>
+                    <img className='game_detail--img' src={game.Images?.map(image => {
+                        return image.url;
+                    })} alt={game.Images?.map(image => {
+                        return image.alt;
+                    })}/>
+                </section>
+                <section className='game_detail_description--container'>
+                    <p className='game_detail--description'>{game.description}</p>  
+                </section>
+                <section className='game_detail_genres--container'>
+                    <p className='game_detail--genres'>{game.Genres?.map(genre => {
+                        return <p>{genre.name}</p>
+                    })}</p>
+                </section>
+            </div>
+        )
+    }
 }

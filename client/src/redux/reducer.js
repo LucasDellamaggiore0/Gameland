@@ -54,6 +54,7 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     builder.addCase(GET_GAME_BY_ID.fulfilled, (state, action) => {
         state.game = action.payload;
+        state.loading = false;
     })
     builder.addCase(CLEAN_UP_DETAILS, (state, action) => {
         state.game = action.payload;
