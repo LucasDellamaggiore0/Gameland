@@ -13,7 +13,7 @@ export default function Home() {
 	const { games, loading } = useSelector(state => state.reducer);
 	useEffect(() => {
 		dispatch(GET_GAMES());
-	} , [games]);
+	} , [dispatch]);
 	if(loading) {
 		return <Loader />
 	}else{
