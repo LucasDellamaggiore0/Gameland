@@ -27,6 +27,7 @@ export default function NewGame() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (Object.keys(errors).length === 0) {
+			console.log(games)
 			dispatch(ADD_GAME(games))
 		}
 		setGames({
@@ -34,7 +35,8 @@ export default function NewGame() {
 			description: '',
 			genres: [],
 			platforms: [],
-			img: []
+			img: [],
+			released_date: ''
 		})
 	}
 
