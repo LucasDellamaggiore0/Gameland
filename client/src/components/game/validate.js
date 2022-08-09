@@ -12,5 +12,8 @@ export default function validate(game){
     if(!game.platforms){
         errors.platforms = 'El juego debe tener al menos una plataforma';
     }
+    if(!game.released_date){
+        errors.released_date = 'La fecha de lanzamiento es obligatoria';
+    }
     return errors;
 }

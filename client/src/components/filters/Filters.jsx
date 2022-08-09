@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { FILTER_GAMES_BY_GENRE, FILTER_GAMES_BY_PLATFORMS, GET_GENRES, GET_PLATFORMS } from '../../redux/actions'
+import { FILTER_GAMES_BY_GENRE, FILTER_GAMES_BY_PLATFORMS, GET_GAMES, GET_GENRES, GET_PLATFORMS } from '../../redux/actions'
 export default function Filters() {
     const dispatch = useDispatch()
     const { genres } = useSelector(state => state.reducer)
@@ -32,7 +32,10 @@ export default function Filters() {
         // e.preventDefault()
         setShowPlatform(!showPlatform)
     }
-
+    const handleFilters = (e) => {
+        e.preventDefault()
+        dispatch(GET_GAMES())
+    }
 
     useEffect(() => {
         dispatch(GET_GENRES())
@@ -70,19 +73,22 @@ export default function Filters() {
                         <p className='title__page'>GAMELAND</p>
                     </Link>
                 </div>
-                <div className="filter-by-genre">
-                    <p className='filter__title'>Genres</p>
-                    {currentGenre?.map(genre => <button key={genre.id} onClick={handleFilterGamesByGenre} value={genre.name}>{genre.name}</button>)}
-                    <button className='show__all--genres' onClick={handleShowGenre}>{
-                        showGenre ? 'Hide ▲' : 'Show all genres ▼'
-                    }</button>
-                </div>
-                <div className="filter-by-platforms">
-                    <p className='filter__title'>Platforms</p>
-                    {currentPlatform?.map(platform => <button key={platform.id} onClick={handleFilterGamesByPlatforms} value={platform.name}>{platform.name}</button>)}
-                    <button className='show__all--platforms' onClick={handleShowPlatform}>{
-                        showPlatform ? 'Hide ▲' : 'Show all platforms ▼'
-                    }</button>
+                <div className='all__filters--container'>
+                    <div className="filter-by-genre">
+                        <button className='reset__filters' onClick={handleFilters}>Reset filters</button>
+                        <p className='filter__title'>Genres</p>
+                        {currentGenre?.map(genre => <button key={genre.id} onClick={handleFilterGamesByGenre} value={genre.name}>{genre.name}</button>)}
+                        <button className='show__all--genres' onClick={handleShowGenre}>{
+                            showGenre ? 'Hide ▲' : 'Show all genres ▼'
+                        }</button>
+                    </div>
+                    <div className="filter-by-platforms">
+                        <p className='filter__title'>Platforms</p>
+                        {currentPlatform?.map(platform => <button key={platform.id} onClick={handleFilterGamesByPlatforms} value={platform.name}>{platform.name}</button>)}
+                        <button className='show__all--platforms' onClick={handleShowPlatform}>{
+                            showPlatform ? 'Hide ▲' : 'Show all platforms ▼'
+                        }</button>
+                    </div>
                 </div>
             </div>
         </>

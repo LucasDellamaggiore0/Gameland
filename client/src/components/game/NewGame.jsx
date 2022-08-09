@@ -12,7 +12,8 @@ export default function NewGame() {
 		description: '',
 		genres: [],
 		platforms: [],
-		img: []
+		img: [],
+		released_date: '',
 	})
 	const [errors, setErrors] = useState('')
 	const handleChange = (e) => {
@@ -91,6 +92,11 @@ export default function NewGame() {
 						<label htmlFor="description">Description</label>
 						<textarea className="form-control" id="description" name="description" value={games.description} onChange={handleChange} />
 						{errors.description && <small>{errors.description}</small>}
+					</div>
+					<div className='form-group'>
+						<label htmlFor="released_date">Released date</label>
+						<input type="date" className="form-control" id="released_date" name="released_date" value={games.released_date} onChange={handleChange} />
+						{errors.released_date && <small>{errors.released_date}</small>}
 					</div>
 					<div className="form-group">
 						<label htmlFor="genres">Genres</label>

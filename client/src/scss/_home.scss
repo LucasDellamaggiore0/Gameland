@@ -52,6 +52,72 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        .all__filters--container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 65%;
+            width: 100%;
+            height: 100%;
+            .filter-by-genre{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 80%;
+                button{
+                    background-color: black;
+                    color: white;
+                    font-size: 20px;
+                    font-family: 'Poppins', sans-serif;
+                    text-align: left;
+                    width: 100%;
+                }
+                button:focus{color: #A1FC2E;}
+                .show__all--genres{
+                    font-size: 16px;
+                }
+            .filter__title{
+                color: white;
+                font-family: 'Poppins', sans-serif;
+                font-weight: 600;
+                margin-bottom: 20px;
+                margin-top: 140px;
+                width: 100%;
+                border-bottom: 2px solid #A1FC2E;
+                font-size: 24px;
+                }
+            }
+            .filter-by-platforms{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 80%;
+                .show__all--platforms{
+                    font-size: 16px;
+                }
+                button{
+                    background-color: black;
+                    color: white;
+                    font-size: 20px;
+                    font-family: 'Poppins', sans-serif;
+                    text-align: left;
+                    width: 100%;
+                }
+                button:focus{color: #A1FC2E;}
+                .filter__title{
+                    color: white;
+                    font-family: 'Poppins', sans-serif;
+                    font-weight: 600;
+                    margin-bottom: 20px;
+                    margin-top: 140px;
+                    width: 100%;
+                    border-bottom: 2px solid #A1FC2E;
+                    font-size: 24px;
+                }
+            }
+        }
         .title__page--container{
             .title__page{
                 color: #A1FC2E;
@@ -61,64 +127,7 @@
                 margin-left: 1rem;
             }
         }
-        .filter-by-genre{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 80%;
-            button{
-                background-color: black;
-                color: white;
-                font-size: 20px;
-                font-family: 'Poppins', sans-serif;
-                text-align: left;
-                width: 100%;
-            }
-            button:focus{color: #A1FC2E;}
-            .show__all--genres{
-                font-size: 16px;
-            }
-            .filter__title{
-                color: white;
-                font-family: 'Poppins', sans-serif;
-                font-weight: 600;
-                margin-bottom: 20px;
-                margin-top: 140px;
-                width: 100%;
-                border-bottom: 2px solid #A1FC2E;
-                font-size: 24px;
-            }
-        }
-        .filter-by-platforms{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 80%;
-            .show__all--platforms{
-                font-size: 16px;
-            }
-            button{
-                background-color: black;
-                color: white;
-                font-size: 20px;
-                font-family: 'Poppins', sans-serif;
-                text-align: left;
-                width: 100%;
-            }
-            button:focus{color: #A1FC2E;}
-            .filter__title{
-                color: white;
-                font-family: 'Poppins', sans-serif;
-                font-weight: 600;
-                margin-bottom: 20px;
-                margin-top: 140px;
-                width: 100%;
-                border-bottom: 2px solid #A1FC2E;
-                font-size: 24px;
-            }
-        }
+        
     }
     .games--home__container{
         grid-area: 2 / 3 / 6 / 13;
