@@ -37,8 +37,6 @@ export default function Login() {
     }
     useEffect(()=>{
         if(userResponse.ok){
-            console.log(1, userResponse)
-            console.log(2, userResponse.user.name)
             navigate('/')
         }else{
             setErrors({
@@ -46,7 +44,8 @@ export default function Login() {
                 errorUser : userResponse.msg
             })
         }
-    }, [userResponse, navigate]) // eslint-disable-line react-hooks/exhaustive-deps
+    }, [userResponse]) // eslint-disable-line react-hooks/exhaustive-deps
+
     return (
         <div className="login">
             <form className='form--container' onSubmit={handleSubmit}>
