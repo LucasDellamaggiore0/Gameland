@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { ADD_GAME, GET_GENRES, GET_PLATFORMS } from '../../redux/actions';
+import { toast } from 'react-toastify';
 import validate from './validate'
 import '../../scss/_gameForm.scss'
 
@@ -27,7 +28,6 @@ export default function NewGame() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (Object.keys(errors).length === 0) {
-			console.log(games)
 			dispatch(ADD_GAME(games))
 		}
 		setGames({
@@ -69,12 +69,14 @@ export default function NewGame() {
 
 	useEffect(() => {
 		if (game.ok) {
-			alert('Juego creado exitosamente')
+			// alert('Juego creado exitosamente')
+			toast.success('Juego creado exitosamente')
 		} else {
 			setErrors({
 				...errors,
 				errorGame: game.msg
 			})
+			toast.error(game.msg)
 		}
 	}, [game]) // eslint-disable-line react-hooks/exhaustive-deps
 	return (

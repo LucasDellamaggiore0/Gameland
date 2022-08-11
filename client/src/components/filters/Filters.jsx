@@ -6,6 +6,7 @@ export default function Filters() {
     const dispatch = useDispatch()
     const { genres } = useSelector(state => state.reducer)
     const { platforms } = useSelector(state => state.reducer)
+    const {userResponse} = useSelector(state => state.reducer)
 
     const [currentGenre, setCurrentGenre] = useState([])
     const [showGenre, setShowGenre] = useState(false)
@@ -72,6 +73,9 @@ export default function Filters() {
                     <Link to='/'>
                         <p className='title__page'>GAMELAND</p>
                     </Link>
+                </div>
+                <div className='welcome__content--container'>
+                        {userResponse.ok ? <p className='welcome__msg'>Welcome {userResponse.user.name}</p> : <p className='welcome__msg'>Welcome to Gameland</p>}
                 </div>
                 <div className='all__filters--container'>
                     <div className="filter-by-genre">

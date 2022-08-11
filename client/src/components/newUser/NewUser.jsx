@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { CREATE_USER } from '../../redux/actions'
 import validate from './validate'
+import {toast} from 'react-toastify'
 import '../../scss/_signin.scss'
 
 export default function NewUser() {
@@ -43,12 +44,14 @@ export default function NewUser() {
     }
     useEffect(() => {
         if (newUserResponse.ok) {
+            toast.success('User created successfully')
             navigate('/login')
         } else {
             setErrors({
                 ...errors,
                 errorUser: newUserResponse.msg
             })
+            toast.error(newUserResponse.msg)
         }
     }, [newUserResponse, navigate]) // eslint-disable-line react-hooks/exhaustive-deps
     return (
