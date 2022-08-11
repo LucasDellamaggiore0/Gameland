@@ -5,6 +5,10 @@ import {FaUserCircle} from 'react-icons/fa'
 import {IoIosLogOut} from 'react-icons/io'
 
 export default function Nav() {
+    const logOut = () => {
+        localStorage.removeItem('token')
+        window.location.reload()
+    }
     return (
         <nav className='nav__container'>
             <div className='searchbar__container'>
@@ -13,7 +17,7 @@ export default function Nav() {
             <div className='login__container'>
                 {localStorage.getItem('token') ? <Link to="/">
                     <IoIosLogOut className='login__icon'/>
-                    <p>Logout</p>
+                    <p onClick={logOut}>Logout</p>
                 </Link> : <Link to="/login">
                         <FaUserCircle className='login__icon'/>
                         <p>Login</p>
