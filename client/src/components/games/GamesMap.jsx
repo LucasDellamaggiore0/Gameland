@@ -8,7 +8,7 @@ export default function GamesMap({ games }) {
     return (
         <div className='games__container'>
             {
-                games.length > 0 ? games?.map(game => {
+                games?.length > 0 ? games?.map(game => {
                     let name = game.name;
                     let id = game.id;
                     let url = game.Images?.map(image => {

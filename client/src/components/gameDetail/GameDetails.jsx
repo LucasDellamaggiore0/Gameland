@@ -18,8 +18,8 @@ export default function GameDetails() {
         }
 
     }, [dispatch, id]);
-    console.log("aca", loading)
     if(loading || !game) {
+        dispatch(CLEAN_UP_DETAILS());
         return <Loader />
     }else{
         return (

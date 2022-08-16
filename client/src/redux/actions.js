@@ -4,8 +4,12 @@ const { REACT_APP_URL, REACT_APP_CLOUDINARY } = process.env;
 
 export const GET_GAMES = createAsyncThunk(
     'GET_GAMES', async () => {
-        const response = await axios.get(REACT_APP_URL);
-        return await response.data;
+        try {
+            const response = await axios.get(REACT_APP_URL);
+            return await response.data;
+        } catch (error) {
+            console.log(error);
+        }
     }
 )
 
