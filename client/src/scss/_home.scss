@@ -15,22 +15,26 @@
         .searchbar__container{
             height: 3rem;
             width: 100%;
-            margin-left: 2rem;
+            margin-left: 4rem;
             margin-top: 1%;
             background-color: black;
             display: flex;
             justify-content: flex-start;
             align-items: center;
             .searchbar__input{
-                width: 65%;
+                width: 50%;
                 height: 45%;
                 padding: 1%;
                 border-radius: 12px;
                 border: none;
             }
+            .searchbar__input::placeholder{
+                font-family: 'Poppins', sans-serif;
+                font-size: 16px;
+            }
         }
     .login__container{
-        margin-top: 10px;
+        margin-top: 1%;
         a{
             display: flex;
             flex-direction: column;
