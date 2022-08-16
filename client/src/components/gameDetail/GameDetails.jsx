@@ -8,8 +8,8 @@ import Loader from '../loader/Loader'
 
 export default function GameDetails() {
     const dispatch = useDispatch();
-    const {game, loading} = useSelector(state => state.reducer);
-    const {id} = useParams();
+    const { game, loading } = useSelector(state => state.reducer);
+    const { id } = useParams();
 
     useEffect(() => {
         dispatch(GET_GAME_BY_ID(id));
@@ -18,28 +18,40 @@ export default function GameDetails() {
         }
 
     }, [dispatch, id]);
-    if(loading || !game) {
+    if (loading || !game) {
         dispatch(CLEAN_UP_DETAILS());
         return <Loader />
-    }else{
+    } else {
         return (
-            <div className='game_detail--container'>
-                <h2 className='game_detail--title'>{game.name}</h2>
-                <section className='game_detail_img--container'>
-                    <img className='game_detail--img' src={game.Images?.map(image => {
-                        return image.url;
-                    })} alt={game.Images?.map(image => {
-                        return image.alt;
-                    })}/>
-                </section>
-                <section className='game_detail_description--container'>
-                    <p className='game_detail--description'>{game.description}</p>  
-                </section>
-                <section className='game_detail_genres--container'>
-                    <p className='game_detail--genres'>{game.Genres?.map(genre => {
-                        return <p>{genre.name}</p>
-                    })}</p>
-                </section>
+            // <div className="game-details">
+            //     <div className='game_detail--container'>
+            //         <div className='game_detail_name--container'>
+            //             <h2 className='game_detail--title'>{game.name}</h2>
+            //         </div>
+
+            //     </div>
+            // </div>
+            <div className="game-details">
+                <div className='game_detail--container'>
+                    <div className='game_detail_name--container'>
+                        <h2 className='game_detail--title'>{game.name}</h2>
+                    </div>
+                    <section className='game_detail_img--container'>
+                        <img className='game_detail--img' src={game.Images?.map(image => {
+                            return image.url;
+                        })} alt={game.Images?.map(image => {
+                            return image.alt;
+                        })} />
+                    </section>
+                    <section className='game_detail_description--container'>
+                        <p className='game_detail--description'>{game.description}</p>
+                    </section>
+                    <section className='game_detail_genres--container'>
+                        {game.Genres?.map(genre => {
+                            return <p>{genre.name}</p>
+                        })}
+                    </section>
+                </div>
             </div>
         )
     }

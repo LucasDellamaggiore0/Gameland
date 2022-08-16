@@ -1,19 +1,19 @@
 export default function validate(game){
     const errors = {};
     if(!game.name){
-        errors.name = 'El nombre del juego es obligatorio';
+        errors.name = 'Game name is required';
     }
     if(!game.description){
-        errors.description = 'La descripcion del juego es obligatoria';
+        errors.description = 'Game description is required';
     }
     if(!game.genres){
-        errors.genres = 'El juego debe tener al menos un género';
+        errors.genres = 'The game must have at least one genre';
     }
     if(!game.platforms){
-        errors.platforms = 'El juego debe tener al menos una plataforma';
+        errors.platforms = 'The game must have at least one platform';
     }
     if(!game.released_date){
-        errors.released_date = 'La fecha de lanzamiento es obligatoria';
+        errors.released_date = 'Release date is required';
     }
     return errors;
 }
