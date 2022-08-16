@@ -116,6 +116,7 @@ export const CREATE_USER = createAsyncThunk(
         } catch (error) {
             return {
                 ok: false,
+                error: true,
                 msg: error.response.data.errors.email.msg
             }
         }
@@ -141,13 +142,13 @@ export const ADD_GAME = createAsyncThunk(
             const response = await axios.post(REACT_APP_URL, values);
             return {
                 ok: true,
-                msg: 'Juego agregado',
+                msg: 'Game created successfully!',
                 game: response.data
             }
         } catch (error) {
             return {
-                ok: false,
-                msg: `${error}`
+                error : true,
+                msg:'Error creating game'
             }
         }
     }
@@ -192,3 +193,9 @@ export const CLEAN_UP_DETAILS = createAction('CLEAN_UP_DETAILS', () => {
         payload: false
     }
 });
+
+export const CLEAN_NEW_USER = createAction('CLEAN_NEW_USER', () => {
+    return {
+        payload: false
+    }
+})

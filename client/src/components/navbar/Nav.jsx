@@ -14,6 +14,13 @@ export default function Nav() {
             <div className='searchbar__container'>
                 <SearchBar />
             </div>
+            <div className='addgame__container'>
+                {
+                    localStorage.getItem('token') && <Link to='/addGame' className='addgame__link'>
+                    <p>Add Game</p>
+                </Link>
+                }
+            </div>
             <div className='login__container'>
                 {localStorage.getItem('token') ? <Link to="/">
                     <IoIosLogOut className='login__icon'/>

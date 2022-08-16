@@ -17,6 +17,7 @@ export default function NewGame() {
 		released_date: '',
 	})
 	const [errors, setErrors] = useState('')
+	const [createGame, setCreateGame] = useState(false)
 	const handleChange = (e) => {
 		setGames({ ...games, [e.target.name]: e.target.value })
 		let objErrors = validate({
@@ -70,9 +71,9 @@ export default function NewGame() {
 	useEffect(() => {
 		if (game.ok) {
 			// alert('Juego creado exitosamente')
-			toast.success('Game created successfully!')
-		} else {
-			toast.error('Error creating game')
+			toast.success(game.msg)
+		} else if(game.error) {
+			toast.error(game.msg)
 		}
 	}, [game]) // eslint-disable-line react-hooks/exhaustive-deps
 	return (

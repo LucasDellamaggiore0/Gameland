@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { CREATE_USER } from '../../redux/actions'
+import { CREATE_USER, CLEAN_NEW_USER } from '../../redux/actions'
 import validate from './validate'
 import {toast} from 'react-toastify'
 import '../../scss/_signin.scss'
@@ -43,24 +43,17 @@ export default function NewUser() {
         })
     }
     useEffect(() => {
-        if (newUserResponse.ok){
+        if(newUserResponse.ok){
             toast.success('User created successfully')
+            dispatch(CLEAN_NEW_USER())
             navigate('/login')
-        } else {
+        }
+        else{
             toast.error(newUserResponse.msg)
         }
     }, [newUserResponse, navigate]) // eslint-disable-line react-hooks/exhaustive-deps
     
-    useEffect(() => {
-        if (newUserResponse.ok){
-            setFormValues({
-                name: '',
-                email: '',
-                password: '',
-                confirmPassword: ''
-            })
-        }
-    }) // eslint-disable-line react-hooks/exhaustive-deps
+    console.log(newUserResponse)
     
     return (
         <div className="signin">
