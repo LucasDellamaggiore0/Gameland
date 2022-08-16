@@ -12,6 +12,24 @@
         display: flex;
         justify-content: space-between;
         align-items: normal;
+        .addgame__container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 30%;
+            margin-right: 4%;
+            margin-top: 0%;
+            p{
+                color : #A1FC2E;
+                font-family: 'Poppins', sans-serif;
+                font-size: 22px;
+                height: 45%;
+                margin-bottom: 7%;
+            }
+            p:hover{
+                color: white;
+            }
+        }
         .searchbar__container{
             height: 3rem;
             width: 100%;
