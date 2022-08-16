@@ -43,17 +43,25 @@ export default function NewUser() {
         })
     }
     useEffect(() => {
-        if (newUserResponse.ok) {
+        if (newUserResponse.ok){
             toast.success('User created successfully')
             navigate('/login')
         } else {
-            setErrors({
-                ...errors,
-                errorUser: newUserResponse.msg
-            })
             toast.error(newUserResponse.msg)
         }
     }, [newUserResponse, navigate]) // eslint-disable-line react-hooks/exhaustive-deps
+    
+    useEffect(() => {
+        if (newUserResponse.ok){
+            setFormValues({
+                name: '',
+                email: '',
+                password: '',
+                confirmPassword: ''
+            })
+        }
+    }) // eslint-disable-line react-hooks/exhaustive-deps
+    
     return (
         <div className="signin">
             <form className='form-signin__container' onSubmit={handleSubmit}>
@@ -83,7 +91,6 @@ export default function NewUser() {
                     </div>
                 </div>
                 <button className='signin-btn' type='submit'>Create Account</button>
-                {errors.errorUser && <p>{errors.errorUser}</p>}
             </form>
         </div>
     )

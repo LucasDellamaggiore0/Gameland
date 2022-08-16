@@ -70,13 +70,9 @@ export default function NewGame() {
 	useEffect(() => {
 		if (game.ok) {
 			// alert('Juego creado exitosamente')
-			toast.success('Juego creado exitosamente')
+			toast.success('Game created successfully!')
 		} else {
-			setErrors({
-				...errors,
-				errorGame: game.msg
-			})
-			toast.error(game.msg)
+			toast.error('Error creating game')
 		}
 	}, [game]) // eslint-disable-line react-hooks/exhaustive-deps
 	return (
