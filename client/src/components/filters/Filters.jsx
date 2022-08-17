@@ -77,14 +77,14 @@ export default function Filters() {
                     <div className="filter-by-genre">
                         <button className='reset__filters' onClick={handleFilters}>Reset filters</button>
                         <p className='filter__title'>Genres</p>
-                        {currentGenre?.map(genre => <button key={genre.id} onClick={handleFilterGamesByGenre} value={genre.name}>{genre.name}</button>)}
+                        {currentGenre?.map(genre => <button className='button__genre' key={genre.id} onClick={handleFilterGamesByGenre} value={genre.name}>{genre.name}</button>)}
                         <button className='show__all--genres' onClick={handleShowGenre}>{
                             showGenre ? 'Hide ▲' : 'Show all genres ▼'
                         }</button>
                     </div>
                     <div className="filter-by-platforms">
                         <p className='filter__title'>Platforms</p>
-                        {currentPlatform?.map(platform => <button key={platform.id} onClick={handleFilterGamesByPlatforms} value={platform.name}>{platform.name}</button>)}
+                        {currentPlatform?.map(platform => <button className='button__platform' key={platform.id} onClick={handleFilterGamesByPlatforms} value={platform.name}>{platform.name}</button>)}
                         <button className='show__all--platforms' onClick={handleShowPlatform}>{
                             showPlatform ? 'Hide ▲' : 'Show all platforms ▼'
                         }</button>

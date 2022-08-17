@@ -94,9 +94,19 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                align-items: center;
+                align-items: flex-start;
                 width: 80%;
-                button{
+                .reset__filters{
+                    color: white;
+                    background-color: #1F1F1F;
+                    font-family: "Poppins", sans-serif;
+                    text-align: center;
+                    padding: 3%;
+                    border: 1px solid black;
+                    width: 70%;
+                    font-size: 18px;
+                }
+                .button__genre{
                     background-color: black;
                     color: white;
                     font-size: 20px;
@@ -104,16 +114,21 @@
                     text-align: left;
                     width: 100%;
                 }
-                button:focus{color: #A1FC2E;}
+                .button__genre:focus{color: #A1FC2E;}
                 .show__all--genres{
                     font-size: 16px;
+                    background-color: black;
+                    color: white;
+                    font-family: 'Poppins', sans-serif;
+                    text-align: left;
+                    width: 100%;
                 }
             .filter__title{
                 color: white;
                 font-family: 'Poppins', sans-serif;
                 font-weight: 600;
-                margin-bottom: 20px;
-                margin-top: 140px;
+                margin-bottom: 10%;
+                margin-top: 20%;
                 width: 100%;
                 border-bottom: 2px solid #A1FC2E;
                 font-size: 24px;
@@ -127,8 +142,13 @@
                 width: 80%;
                 .show__all--platforms{
                     font-size: 16px;
+                    background-color: black;
+                    color: white;
+                    font-family: 'Poppins', sans-serif;
+                    text-align: left;
+                    width: 100%;
                 }
-                button{
+                .button__platform{
                     background-color: black;
                     color: white;
                     font-size: 20px;
@@ -136,7 +156,7 @@
                     text-align: left;
                     width: 100%;
                 }
-                button:focus{color: #A1FC2E;}
+                .button__platform:focus{color: #A1FC2E;}
                 .filter__title{
                     color: white;
                     font-family: 'Poppins', sans-serif;
