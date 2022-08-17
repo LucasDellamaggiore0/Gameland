@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { ADD_GAME, GET_GENRES, GET_PLATFORMS } from '../../redux/actions';
 import { toast } from 'react-toastify';
+import {AiFillHome} from 'react-icons/ai';
+import {Link} from 'react-router-dom';
 import validate from './validate'
 import '../../scss/_gameForm.scss'
 
@@ -17,7 +19,6 @@ export default function NewGame() {
 		released_date: '',
 	})
 	const [errors, setErrors] = useState('')
-	const [createGame, setCreateGame] = useState(false)
 	const handleChange = (e) => {
 		setGames({ ...games, [e.target.name]: e.target.value })
 		let objErrors = validate({
@@ -78,6 +79,11 @@ export default function NewGame() {
 	}, [game]) // eslint-disable-line react-hooks/exhaustive-deps
 	return (
 		<div className="gameForm">
+			<div className='backHome'>
+				<Link to='/'>
+					<AiFillHome className='iconHome' />	
+				</Link>
+			</div>
 			<div className='form__game--container'>
 				<form className='form__game'>
 					{errors.errorGame && <p>{errors.errorGame}</p>}
@@ -140,7 +146,6 @@ export default function NewGame() {
 						<button type="submit" className="btn btn-primary" onClick={handleSubmit}>Add Game</button>
 					</div>
 				</form>
-
 			</div>
 		</div>
 
