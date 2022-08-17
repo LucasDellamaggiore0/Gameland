@@ -4,12 +4,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { ADD_GAME, GET_GENRES, GET_PLATFORMS } from '../../redux/actions';
 import { toast } from 'react-toastify';
 import {AiFillHome} from 'react-icons/ai';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import validate from './validate'
 import '../../scss/_gameForm.scss'
 
 
+
 export default function NewGame() {
+	const navigate = useNavigate();
 	const [games, setGames] = useState({
 		name: '',
 		description: '',
@@ -67,8 +69,6 @@ export default function NewGame() {
 		dispatch(GET_GENRES())
 	}, [dispatch])
 
-
-
 	useEffect(() => {
 		if (game.ok) {
 			// alert('Juego creado exitosamente')
@@ -77,6 +77,14 @@ export default function NewGame() {
 			toast.error(game.msg)
 		}
 	}, [game]) // eslint-disable-line react-hooks/exhaustive-deps
+	
+	const token = localStorage.getItem('token')
+	useEffect(() => {
+		if (!token) {
+			toast.info('You must be logged in to create a game')
+			navigate('/')
+		} 
+	}, [token])
 	return (
 		<div className="gameForm">
 			<div className='backHome'>
