@@ -6,7 +6,7 @@ export default function Filters() {
     const dispatch = useDispatch()
     const { genres } = useSelector(state => state.reducer)
     const { platforms } = useSelector(state => state.reducer)
-
+    const { userResponse } = useSelector(state => state.reducer)
     const [currentGenre, setCurrentGenre] = useState([])
     const [showGenre, setShowGenre] = useState(false)
     const [currentPlatform, setCurrentPlatform] = useState([])
@@ -39,6 +39,7 @@ export default function Filters() {
 
     useEffect(() => {
         dispatch(GET_GENRES())
+        console.log(userResponse)
     }, [dispatch])
 
     useEffect(() => {
@@ -68,12 +69,12 @@ export default function Filters() {
     return (
         <>
             <div className="filters__container">
-                <div className='title__page--container'>
-                    <Link to='/'>
-                        <p className='title__page'>GAMELAND</p>
-                    </Link>
-                </div>
                 <div className='all__filters--container'>
+                    <div className='user__date--container'>
+                        <p className='user__date'>
+                            {localStorage.getItem('name') && <>Welcome, {localStorage.getItem('name')}</>}
+                        </p>
+                    </div>
                     <div className="filter-by-genre">
                         <button className='reset__filters' onClick={handleFilters}>Reset filters</button>
                         <p className='filter__title'>Genres</p>

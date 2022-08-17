@@ -8,6 +8,7 @@ import { GET_GAMES } from '../../redux/actions'
 import { useDispatch } from 'react-redux'
 import Loader from '../loader/Loader'
 import '../../scss/_home.scss'
+import TitlePage from '../title/TitlePage'
 export default function Home() {
 	const dispatch = useDispatch();
 	const { games, loading } = useSelector(state => state.reducer);
@@ -19,6 +20,7 @@ export default function Home() {
 	}else{
 		return (
 			<div className='home__container'>
+				<TitlePage/>
 				<Nav />
 				<Filters />
 				<GamesContainer games={games} />

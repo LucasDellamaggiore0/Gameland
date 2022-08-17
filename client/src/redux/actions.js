@@ -98,6 +98,7 @@ export const LOG_IN = createAsyncThunk(
         try {
             const response = await axios.post(REACT_APP_URL + `auth/signin`, user);
             localStorage.setItem('token', response.data.token);
+            localStorage.setItem('name', response.data.user.name);
             return await response.data;
         } catch (error) {
             return {

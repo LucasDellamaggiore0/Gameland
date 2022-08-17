@@ -1,12 +1,13 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import SearchBar from './SearchBar'
-import {FaUserCircle} from 'react-icons/fa'
-import {IoIosLogOut} from 'react-icons/io'
+import { FaUserCircle } from 'react-icons/fa'
+import { IoIosLogOut } from 'react-icons/io'
 
 export default function Nav() {
     const logOut = () => {
         localStorage.removeItem('token')
+        localStorage.removeItem('name')
         window.location.reload()
     }
     return (
@@ -17,18 +18,16 @@ export default function Nav() {
             <div className='addgame__container'>
                 {
                     localStorage.getItem('token') && <Link to='/addGame' className='addgame__link'>
-                    <p>Add Game</p>
-                </Link>
+                        <p>Add Game</p>
+                    </Link>
                 }
             </div>
             <div className='login__container'>
                 {localStorage.getItem('token') ? <Link to="/">
-                    <IoIosLogOut className='login__icon'/>
-                    <p onClick={logOut}>Logout</p>
+                    <IoIosLogOut className='logout__icon' onClick={logOut} />
                 </Link> : <Link to="/login">
-                        <FaUserCircle className='login__icon'/>
-                        <p>Login</p>
-                    </Link>}
+                    <FaUserCircle className='login__icon' />
+                </Link>}
             </div>
         </nav>
     )

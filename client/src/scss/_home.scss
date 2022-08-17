@@ -3,48 +3,59 @@
 
 .home__container{
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    width: 100%;
+    grid-auto-columns: 1fr;
+    grid-template-columns: 0.4fr 2.1fr;
+    grid-template-rows: 0.2fr 1.8fr; 
+    grid-template-areas: 
+        "TITLE   NAV"
+        "FILTERS HOME"
+    ;
     height: 100vh;
+    .title__page--container{
+        grid-area: TITLE;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+        .title__page{
+            color: #A1FC2E;
+            text-align: center;
+            font-family: 'MuseoModerno', cursive;
+            font-size: 2.3rem;
+        }
+    }
     .nav__container{
-        grid-area: 1 / 3 / 2 / 13;
+        grid-area: NAV;
         background-color: black;
         display: flex;
-        justify-content: space-between;
-        align-items: normal;
+        align-items: center;
         .addgame__container{
             display: flex;
-            justify-content: center;
             align-items: center;
-            width: 30%;
-            margin-right: 4%;
-            margin-top: 0%;
+            width: 20%;
+            justify-content: center;
             p{
                 color : #A1FC2E;
                 font-family: 'Poppins', sans-serif;
                 font-size: 22px;
-                height: 45%;
-                margin-bottom: 7%;
             }
             p:hover{
                 color: white;
             }
         }
         .searchbar__container{
-            height: 3rem;
-            width: 100%;
-            margin-left: 4rem;
-            margin-top: 1%;
             background-color: black;
             display: flex;
-            justify-content: flex-start;
             align-items: center;
+            width: 100%;
+            height: 100%;
             .searchbar__input{
-                width: 50%;
-                height: 45%;
+                height: 20%;
+                width: 45%;
                 padding: 1%;
                 border-radius: 12px;
                 border: none;
+                margin-left: 1%;
             }
             .searchbar__input::placeholder{
                 font-family: 'Poppins', sans-serif;
@@ -52,44 +63,53 @@
             }
         }
     .login__container{
-        margin-top: 1%;
-        a{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: black;
+        width: 10%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .logout__icon{
             border: none;
             color: white;
-            margin-right: 3rem;
-            font-size: 22px;
+            font-size: 24px;
             font-family: 'Poppins', sans-serif;
+            width: 2em;
+            height: 2em;
         }
-        svg{
-            width: 1.5em;
-            height: 1.5em;
+        .login__icon{
+            border: none;
+            color: white;
+            font-size: 20px;
+            font-family: 'Poppins', sans-serif;
+            width: 2em;
+            height: 2em;
         }
     }
     }
     .filters__container{
-        grid-area: 1 / 1 / 6 / 3;
+        grid-area: FILTERS;
         background-color: black;
         display: flex;
         flex-direction: column;
         align-items: center;
-        .welcome__content--container{
-            p{
-                color: white;
-                font-family: 'Poppins', sans-serif;
-            }
-        }
         .all__filters--container{
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 65%;
             width: 100%;
             height: 100%;
+            .user__date--container{
+                width: 100%;
+                margin-bottom: 40%;
+                margin-top: 10%;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-family: "Poppins", sans-serif;
+                font-size: 22px;
+            }
             .filter-by-genre{
                 display: flex;
                 flex-direction: column;
@@ -169,25 +189,13 @@
                 }
             }
         }
-        .title__page--container{
-            .title__page{
-                color: #A1FC2E;
-                text-align: center;
-                font-family: 'MuseoModerno', cursive;
-                font-size: 2.5rem;
-                margin-left: 1rem;
-            }
-        }
-        
     }
     .games--home__container{
-        grid-area: 2 / 3 / 6 / 13;
+        grid-area: HOME;
         display: flex;
         flex-direction: column;
         background-color: black;
         .games-orders__container{
-            margin-top:3%;
-            margin-left: 1%;
             width: 50%;
             .orders__container{
                 display: flex;
