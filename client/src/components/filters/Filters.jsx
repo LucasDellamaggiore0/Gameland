@@ -67,11 +67,6 @@ export default function Filters() {
         <>
             <div className="filters__container">
                 <div className='all__filters--container'>
-                    <div className='user__date--container'>
-                        <p className='user__date'>
-                            {localStorage.getItem('name') && <>Welcome, {localStorage.getItem('name')}</>}
-                        </p>
-                    </div>
                     <div className="filter-by-genre">
                         <button className='reset__filters' onClick={handleFilters}>Reset filters</button>
                         <p className='filter__title'>Genres</p>
