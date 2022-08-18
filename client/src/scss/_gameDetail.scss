@@ -2,44 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 
-// .game-details{
-//     width: 100%;
-//     height: 100vh;
-//     background-color: #1f1f1f;
-//     .game_detail--container{
-//         width: 100%;
-//         height: 100%;
-//         display: flex;
-//         justify-content: center;
-//         flex-direction: column;
-//         .game_detail_img--container{
-//             width: 100%;
-//             height: 100%;
-//             display: flex;
-//             justify-content: center;
-//             img{
-//                 width: 80%;
-//                 height: 90%;
-//                 object-fit: fill;
-//                 image-rendering: auto;
-//             }
-//         }
-// }
-// }
-
 .game-details{
     width: 100%;
     min-height: 100vh;
     background-color: #1f1f1f;
-    .game_detail--container{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        min-height: 100%;
-        .backHome{
-            width: 100%;
+    display: flex;
+    .backHome{
             height: 35%;
             padding: 1%;
             margin: 1%;
@@ -50,6 +18,13 @@
                 margin: 2%;
             }
         }
+    .game_detail--container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 100%;
         .game_detail_name--container{
             margin-bottom: 2rem;
             h2{

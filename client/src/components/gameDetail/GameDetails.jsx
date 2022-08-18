@@ -24,21 +24,13 @@ export default function GameDetails() {
         return <Loader />
     } else {
         return (
-            // <div className="game-details">
-            //     <div className='game_detail--container'>
-            //         <div className='game_detail_name--container'>
-            //             <h2 className='game_detail--title'>{game.name}</h2>
-            //         </div>
-
-            //     </div>
-            // </div>
             <div className="game-details">
+                <div className='backHome'>
+                    <Link to='/'>
+                        <AiFillHome className='iconHome' />
+                    </Link>
+                </div>
                 <div className='game_detail--container'>
-                    <div className='backHome'>
-                        <Link to='/'>
-                            <AiFillHome className='iconHome' />
-                        </Link>
-                    </div>
                     <div className='game_detail_name--container'>
                         <h2 className='game_detail--title'>{game.name}</h2>
                     </div>
