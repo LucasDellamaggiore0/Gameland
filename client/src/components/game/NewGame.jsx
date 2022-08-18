@@ -84,7 +84,7 @@ export default function NewGame() {
 			toast.info('You must be logged in to create a game')
 			navigate('/')
 		} 
-	}, [token])
+	}, [token, navigate])
 	return (
 		<div className="gameForm">
 			<div className='backHome'>

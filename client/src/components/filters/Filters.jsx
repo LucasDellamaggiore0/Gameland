@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
 import { FILTER_GAMES_BY_GENRE, FILTER_GAMES_BY_PLATFORMS, GET_GAMES, GET_GENRES, GET_PLATFORMS } from '../../redux/actions'
 export default function Filters() {
     const dispatch = useDispatch()
     const { genres } = useSelector(state => state.reducer)
     const { platforms } = useSelector(state => state.reducer)
-    const { userResponse } = useSelector(state => state.reducer)
     const [currentGenre, setCurrentGenre] = useState([])
     const [showGenre, setShowGenre] = useState(false)
     const [currentPlatform, setCurrentPlatform] = useState([])
@@ -39,7 +37,6 @@ export default function Filters() {
 
     useEffect(() => {
         dispatch(GET_GENRES())
-        console.log(userResponse)
     }, [dispatch])
 
     useEffect(() => {
