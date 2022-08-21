@@ -233,6 +233,12 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
+            .nogames__container{
+                color: #A1FC2E;
+                font-family: 'Poppins', sans-serif;
+                margin-top: 5%;
+                font-size: 1.5rem;
+            }
             .gamecard__container{
                 width: 32%;
                 height: auto;
