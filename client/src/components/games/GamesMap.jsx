@@ -44,7 +44,9 @@ export default function GamesMap({ games }) {
                         <GameCard key={id} name={name} url={url} alt = {alt} genres={genres} platforms = {platforms} id={id}/>
                     )
                 }
-                ) : <h1>No Games</h1>
+                ) :<div className='nogames__container'>
+                        <h1 >No games found</h1>
+                   </div> 
             }
         </div>
     )
