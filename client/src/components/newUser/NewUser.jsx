@@ -9,7 +9,7 @@ import '../../scss/_signin.scss'
 export default function NewUser() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const { newUserResponse } = useSelector(state => state.reducer)
+    const { newUser } = useSelector(state => state.reducer)
     const [formValues, setFormValues] = useState({
         name: '',
         email: '',
@@ -43,17 +43,17 @@ export default function NewUser() {
         })
     }
     useEffect(() => {
-        if(newUserResponse.ok){
+        if(newUser.ok){
             toast.success('User created successfully')
             dispatch(CLEAN_NEW_USER())
             navigate('/login')
         }
         else{
-            toast.error(newUserResponse.msg)
+            toast.error(newUser.msg)
         }
-    }, [newUserResponse, navigate]) // eslint-disable-line react-hooks/exhaustive-deps
+    }, [newUser, navigate]) // eslint-disable-line react-hooks/exhaustive-deps
     
-    console.log(newUserResponse)
+    console.log(newUser)
     
     return (
         <div className="signin">

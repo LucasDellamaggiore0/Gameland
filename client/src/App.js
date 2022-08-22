@@ -9,6 +9,7 @@ import AddGenres from './components/genres/AddGenres';
 import GameDetails from './components/gameDetail/GameDetails';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ConfirmAccount from './components/confirmAccount/ConfirmAccount';
 function App() {
   return (
     <div className='App'>
@@ -20,6 +21,7 @@ function App() {
         <Route path='/addPlatform' element={<AddPlatforms />} />
         <Route path='/addGenres' element={<AddGenres />} />
         <Route path='/game/:id' element={<GameDetails />} />
+        <Route path='/activateAccount' element={<ConfirmAccount/>} />
       </Routes>
       <ToastContainer
         position="top-right"

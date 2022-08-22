@@ -36,7 +36,7 @@ export default function Login() {
         })
     }
     useEffect(()=>{
-        if(userResponse.ok){
+        if(userResponse.token){
             navigate('/')
         }else{
             setErrors({
