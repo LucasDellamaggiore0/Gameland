@@ -1,12 +1,17 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import '../../scss/_confirmAccount.scss'
+
 
 export default function ConfirmAccount() {
+    const navigate = useNavigate()    
+    setTimeout(function(){
+        navigate('/login')
+    }, 5000)
+    
     return (
-        <div>
-            <h1>Confirm Account</h1>
-            <button>
-                Confirm Account
-            </button>
+        <div className='account--activate__container'>
+            <h1>Account activated successfully!</h1>
         </div>
     )
 }

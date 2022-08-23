@@ -44,16 +44,15 @@ export default function NewUser() {
     }
     useEffect(() => {
         if(newUser.ok){
-            toast.success('User created successfully')
+            toast.success('User created successfully. Check your mailbox to activate your account')
             dispatch(CLEAN_NEW_USER())
-            navigate('/login')
+            navigate('/')
         }
         else{
             toast.error(newUser.msg)
         }
     }, [newUser, navigate]) // eslint-disable-line react-hooks/exhaustive-deps
     
-    console.log(newUser)
     
     return (
         <div className="signin">

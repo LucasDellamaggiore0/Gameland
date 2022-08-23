@@ -21,11 +21,11 @@ function App() {
         <Route path='/addPlatform' element={<AddPlatforms />} />
         <Route path='/addGenres' element={<AddGenres />} />
         <Route path='/game/:id' element={<GameDetails />} />
-        <Route path='/activateAccount' element={<ConfirmAccount/>} />
+        <Route path='/accountActivate' element={<ConfirmAccount/>}/>
       </Routes>
       <ToastContainer
         position="top-right"
-        autoClose={2000}
+        autoClose={3000}
         pauseOnHover
         theme='colored'
       />
